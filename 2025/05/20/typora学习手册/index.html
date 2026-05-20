@@ -1,0 +1,843 @@
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>typora学习手册 | KeepStayTrue</title><meta name="author" content="KeepStayTrue"><meta name="copyright" content="KeepStayTrue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="typora学习手册 一 、概述 1、简介 typora是一款轻量级但功能强大的markdown编辑器，支持实时预览、多种格式导出、自定义主题等功能。可以用来记笔记，写技术类的文档。不仅仅适用于程序员，同时也是一款好用的码字、写材料的工具。 1ps：写小说也可以用哦 2、下载及安装 搜索typora中文官网：Typora 官方中文站可根据自身系统进行下载。有米的请支持正版，也可参照以下两个网站步骤">
+<meta property="og:type" content="article">
+<meta property="og:title" content="typora学习手册">
+<meta property="og:url" content="https://keepstaytrue.github.io/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="KeepStayTrue">
+<meta property="og:description" content="typora学习手册 一 、概述 1、简介 typora是一款轻量级但功能强大的markdown编辑器，支持实时预览、多种格式导出、自定义主题等功能。可以用来记笔记，写技术类的文档。不仅仅适用于程序员，同时也是一款好用的码字、写材料的工具。 1ps：写小说也可以用哦 2、下载及安装 搜索typora中文官网：Typora 官方中文站可根据自身系统进行下载。有米的请支持正版，也可参照以下两个网站步骤">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png">
+<meta property="article:published_time" content="2025-05-20T15:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-20T17:27:42.406Z">
+<meta property="article:author" content="KeepStayTrue">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="typora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "typora学习手册",
+  "url": "https://keepstaytrue.github.io/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/",
+  "image": "https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png",
+  "datePublished": "2025-05-20T15:00:00.000Z",
+  "dateModified": "2026-05-20T17:27:42.406Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "KeepStayTrue",
+      "url": "https://keepstaytrue.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/image/logo.png"><link rel="canonical" href="https://keepstaytrue.github.io/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '0a0a0a')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 7 || hour >= 19
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ec88f9db978770ba0987b88800a5ee";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: KeepStayTrue","link":"链接: ","source":"来源: KeepStayTrue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#ff007f","bgDark":"#2a0a1f","position":"top-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'typora学习手册',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="KeepStayTrue" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(/image/calm-bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/logo.png" alt="Logo" loading='lazy'><span class="site-name">KeepStayTrue</span></a><a class="nav-page-title" href="/"><span class="site-name">typora学习手册</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">typora学习手册</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-20T15:00:00.000Z" title="发表于 2025-05-20 23:00:00">2025-05-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-20T17:27:42.406Z" title="更新于 2026-05-21 01:27:42">2026-05-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/%E6%96%87%E6%A1%A3%E5%B7%A5%E5%85%B7/">文档工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-05-21 01:27:42&quot;}" hidden></div><h1>typora学习手册</h1>
+<h2 id="一-、概述">一 、概述</h2>
+<h3 id="1、简介">1、简介</h3>
+<p>typora是一款轻量级但功能强大的markdown编辑器，支持实时预览、多种格式导出、自定义主题等功能。可以用来记笔记，写技术类的文档。不仅仅适用于程序员，同时也是一款好用的码字、写材料的工具。</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps：写小说也可以用哦</span><br></pre></td></tr></tbody></table>
+<h3 id="2、下载及安装">2、下载及安装</h3>
+<p>搜索typora中文官网：<a target="_blank" rel="noopener" href="https://typoraio.cn/">Typora 官方中文站</a>可根据自身系统进行下载。有米的请支持正版，也可参照以下两个网站步骤进行安装（方法引至CSDN，感谢各位）。</p>
+<ul>
+<li>激活方法（目前版本1.9.5以前可用）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_61621323/article/details/141036982">Typora 免费安装教程（已支持最新版 1.9.5）_typora免费安装-CSDN博客</a></li>
+<li>不激活通过修改配置文件方法（各版本均可用）：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45320660/article/details/135482861">typora 序列号（不使用也可以激活）_typora离线激活-CSDN博客</a></li>
+</ul>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps:不缺这三瓜两枣的尽量购买</span><br></pre></td></tr></tbody></table>
+<h2 id="二-、使用手册">二 、使用手册</h2>
+<h3 id="1、基本设置">1、基本设置</h3>
+<p>以下是typora中常见的设置，其余可以保持默认</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#1 点开文件--&gt;偏好设置--&gt;文件选项--&gt;保存&amp;恢复中勾选“自动保存”</span><br><span class="line">#2 点开文件--&gt;偏好设置--&gt;markdown选项--&gt;markdown语法偏好--&gt;勾选“严格模式”</span><br><span class="line">#3 点开文件--&gt;偏好设置--&gt;markdown选项--&gt;markdown扩展语法--&gt;全部勾选</span><br></pre></td></tr></tbody></table>
+<h3 id="2、文档编辑相关">2、文档编辑相关</h3>
+<h4 id="2-1-标题">2.1 标题</h4>
+<p>标题会在目录于大纲分级显示，可以跳转。在typora中开启严格模式，即不应为#标题，应为# 标题，设置方法如下：数个“#”+空格 前置</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></tbody></table>
+<h4 id="2-2-强调">2.2 强调</h4>
+<p>用“**”或“—”包围，或者选中要强调的文字按下ctrl+B.</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#1  **我喜欢学习typora**</span><br><span class="line">#2  __我喜欢学习typora__</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p><strong>我喜欢学习typora</strong></p>
+<h4 id="2-3-斜体">2.3 斜体</h4>
+<p>用“*”或“—”包围，或者选中文字按下ctrl+I.</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#1 *我喜欢学习typora*</span><br><span class="line">#2 _我喜欢学习typora_</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p><em>我喜欢学习typora</em></p>
+<p><em><strong>如果需要斜体并强调</strong></em>，【则加三个“*”或者三个“—”.】</p>
+<h4 id="2-4-删除线">2.4 删除线</h4>
+<p>用“~~”包围，或者shift+alt+5</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~学习治好了我的焦虑~~</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>~学习治好了我的焦虑~</p>
+<p>~学习使我快乐~</p>
+<p><s>测试一下</s></p>
+<h4 id="2-5-高亮">2.5 高亮</h4>
+<p>用“==”包围</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">==每月坚持学习一项新东西==</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>==每月坚持学习一项新东西==</p>
+<h4 id="2-6-代码">2.6 代码</h4>
+<p>用“`”包围</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`print("hello, world!")`</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p><code>print(&quot;hello, world!&quot;)</code></p>
+<h4 id="2-7-代码块">2.7 代码块</h4>
+<p>按三个“`”并敲回车，要想显示行数，需要在typora的设置里进行勾选，另外代码块里可以选择语言，其会根据语言（如python）来自动高亮各个语句。</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></tbody></table>
+<h4 id="2-8-引用">2.8 引用</h4>
+<p>用“&gt;” 前置，需要嵌套使用，则多加一个“&gt;”</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;引用就是在前面加竖线</span><br><span class="line">&gt;&gt;这个就是在嵌套</span><br><span class="line">&gt;&gt;&gt;三重嵌套，过瘾把</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<blockquote>
+<p>引用就是在前面加竖线</p>
+<blockquote>
+<p>这个就是在嵌套</p>
+<blockquote>
+<p>三重嵌套，过瘾把</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="2-9-无序列表">2.9 无序列表</h4>
+<p>用“-”或“+”+<strong>空格</strong> 前置，回车后按下‘tab“键后，会自动缩进一级。按下”ctrl+[“,取消缩进，回到行首。</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 相当于在文字前加实心点</span><br><span class="line">+ 一样的效果</span><br><span class="line">* 也行，不过因为一般会自动补全为两个*，所以不常用</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<ul>
+<li>相当于在文字前加实心点
+<ul>
+<li>按下tab键后会自动缩进一级
+<ul>
+<li>再按tab,在缩进一级
+<ul>
+<li>再按继续缩进</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-10-有序列表">2.10 有序列表</h4>
+<p>数字+”.“+空格 前置，回车会自动补全，回车后按下tab键后会缩进一级</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 我讲三点，这是第一点</span><br><span class="line">2. 这是第二点</span><br><span class="line">3. 这是第三点</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<ol>
+<li>我讲三点，这是第一点</li>
+<li>这是第二点</li>
+<li>这是第三点
+<ol>
+<li>回车后按tab会缩进
+<ol>
+<li>再按在缩进</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="2-11-上标">2.11 上标</h4>
+<p>用”^“包围</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如2^10^=1024</span><br><span class="line">参考文献^[1][2]^</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>2^10^=1024</p>
+<p>参考文献^[1][2]^</p>
+<h4 id="2-12-下标">2.12 下标</h4>
+<p>用“~”包围</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">co~2~灭火器</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>co~2~灭火器</p>
+<h4 id="2-13-下划线">2.13 下划线</h4>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;+要下划线的文字+&lt;/u&gt;</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>下划线</p>
+<h4 id="2-14-注释">2.14 注释</h4>
+<p>“[^]”后置</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;难忘今宵，明年在相会！[^1]</span><br><span class="line"></span><br><span class="line">1:春节联欢晚会</span><br></pre></td></tr></tbody></table>
+<blockquote>
+<p>难忘今宵，明年在相会！[^1]</p>
+</blockquote>
+<p>1:春节联欢晚会</p>
+<h4 id="2-15-链接">2.15 链接</h4>
+<p>常用“[]”+“()”分别包围文本与链接</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#1 外链（需按住ctrl）：[大家可以访问typora官方中文站](https://typoraio.cn/)</span><br><span class="line">#2 文内跳转（需按住ctrl）：[跳转到 2.3 斜体](#2.3 斜体)</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p><a target="_blank" rel="noopener" href="https://typoraio.cn/">大家可以访问typora官方中文站</a></p>
+<p>[跳转到 2.3 斜体](#2.3 斜体)</p>
+<h4 id="2-16-任务列表">2.16 任务列表</h4>
+<p>采用“- [ ]”+空格 前置或快捷键ctrl+shift+x</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">今天的任务：</span><br><span class="line">- [ ] 送小孩上学</span><br><span class="line">- [ ] 学习typora</span><br><span class="line">- [ ] 接小孩</span><br><span class="line">- [x] 吃饭</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>今天的任务：</p>
+<ul>
+<li>[ ]  送小孩上学</li>
+<li>[ ]  学习typora</li>
+<li>[ ]  接小孩</li>
+<li>[x]  吃饭</li>
+</ul>
+<h4 id="2-17-表格">2.17 表格</h4>
+<p>直接右键——&gt;插入——&gt;表格</p>
+<p>示例：</p>
+<table>
+<thead>
+<tr>
+<th>本周计划</th>
+<th>内容</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>周一</td>
+<td>学习typora</td>
+<td>对学习情况进行记录</td>
+</tr>
+<tr>
+<td>周二</td>
+<td>运动</td>
+<td>消耗2000卡</td>
+</tr>
+<tr>
+<td>周三</td>
+<td>看哪吒2</td>
+<td>二刷，并安利身边至少5个人</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-18-图片">2.18 图片</h4>
+<p>直接拖进来或者复制粘贴，设置中可以更改图片的存储方式，更进一步的的学习，可以参照如下链接（引用自CSDN）：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/young2415/article/details/112750161">Typora使用技巧之插入图片及图片上传_typora插入图片-CSDN博客</a></p>
+<h4 id="2-19-表情">2.19 表情</h4>
+<p>“：”+表情英文+“：”，具体表情的英文可以参考CSDN中这篇链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42395140/article/details/111642339">Typora中的emoji表情_typora emoji-CSDN博客</a></p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:smile:</span><br><span class="line">:laughing:</span><br><span class="line">:heart_eyes:</span><br></pre></td></tr></tbody></table>
+<p>示例：</p>
+<p>:smile:<br>
+:laughing:<br>
+:heart_eyes:</p>
+<h2 id="三-、其他功能">三 、其他功能</h2>
+<h3 id="1、目录">1、目录</h3>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[TOC]参见本文档开头</span><br></pre></td></tr></tbody></table>
+<h3 id="2、数学公式">2、数学公式</h3>
+<p>选择段落——&gt;公式块，采用“$”包围，关于常见的公式语法，可参见CSDN，链接如下：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43444349/article/details/105400052">全面整理Typora的Latex数学公式语法_latex数学公式中间回车-CSDN博客</a></p>
+<p>示例：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mi>i</mi><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>c</mi><mi>o</mi><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">sin^2+cos^2=1  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">i</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord mathnormal">co</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span></span></p>
+<h3 id="3、主题样式">3、主题样式</h3>
+<p>在 Typora 中自定义主题可以按照以下步骤进行操作：</p>
+<ol>
+<li>
+<p><strong>找到主题文件夹</strong> 打开 Typora 软件，点击菜单栏中的 “文件”，选择 “偏好设置”（在 Mac 系统中是 “Typora” -&gt; “偏好设置”）。在打开的偏好设置窗口中，点击左侧的 “外观” 选项。在右侧找到 “打开主题文件夹” 按钮并点击，这会打开 Typora 的主题文件夹。</p>
+</li>
+<li>
+<p><strong>选择基础主题（可选）</strong> 在主题文件夹中，你会看到许多已经存在的主题文件（.css 格式）。你可以选择一个现有的主题作为基础来进行修改，这样可以减少一些基础样式的编写工作。例如，复制一份 <code>github.css</code> 文件，并将复制后的文件重命名为你想要的新主题名称，比如 <code>my_custom_theme.css</code>。</p>
+</li>
+<li>
+<p><strong>编辑主题 CSS 文件</strong> 使用文本编辑器（如 Notepad++、Sublime Text、Visual Studio Code 等）打开你刚才复制并重命名的 CSS 文件（<code>my_custom_theme.css</code>）。在这个 CSS 文件中，你可以根据自己的喜好修改各种样式。以下是一些常见的样式修改示例：</p>
+<ul>
+<li><strong>修改字体</strong>：
+<ul>
+<li><code>css body { font-family: Arial, sans-serif; /* 这里可以换成你喜欢的字体 */ font-size: 16px; /* 修改字体大小 */ }</code></li>
+</ul>
+</li>
+<li><strong>修改标题样式</strong>：
+<ul>
+<li><code>css h1 { color: #333; /* 修改一级标题颜色 */ border-bottom: 2px solid #ccc; /* 在一级标题下方添加边框 */ padding-bottom: 5px; /* 标题下方内边距 */ }</code></li>
+</ul>
+</li>
+<li><strong>修改代码块样式</strong>：
+<ul>
+<li><code>css code, pre { background-color: #f4f4f4; /* 修改代码块和行内代码的背景颜色 */ border: 1px solid #ccc; /* 添加边框 */ border-radius: 3px; /* 圆角 */ padding: 2px 4px; /* 内边距 */ }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>保存并应用主题：</strong></p>
+<p>完成 CSS 文件的修改后，保存文件。然后回到 Typora 的偏好设置窗口，在 “外观” 选项中，点击 “主题” 下拉菜单，你应该能看到你自定义的主题名称，选择它即可应用你刚刚自定义的主题。 通过以上步骤，你就可以在 Typora 中创建并使用自己的自定义主题了。你可以不断调整 CSS 样式，直到达到你满意的效果。</p>
+</li>
+</ol>
+<h3 id="4、画图">4、画图</h3>
+<p>采用typora可进行画图操作，常见流程图、甘特图、时序图、饼图等等，均可通过代码实现。前提在文件——&gt;偏好设置——&gt;markdown——&gt;markdown扩展语法——&gt;勾选图表</p>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">graph LR;</span><br><span class="line">a--&gt;b</span><br><span class="line">b--&gt;c</span><br><span class="line">c--&gt;d</span><br><span class="line">d--&gt;a</span><br><span class="line">```</span><br></pre></td></tr></tbody></table>
+<table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR;</span><br><span class="line">a--&gt;b</span><br><span class="line">b--&gt;c</span><br><span class="line">c--&gt;d</span><br><span class="line">d--&gt;a</span><br></pre></td></tr></tbody></table>
+<h2 id="四、常用快捷键">四、常用快捷键</h2>
+<p>以下是typora中常见的快捷键：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">效果</th>
+<th style="text-align:center">按键</th>
+<th style="text-align:center">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>D</code></td>
+<td style="text-align:center">选中当前词</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>L</code></td>
+<td style="text-align:center">选中当前句/行</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>E</code></td>
+<td style="text-align:center">选中当前区块</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>F</code></td>
+<td style="text-align:center">搜索当前选中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>B</code></td>
+<td style="text-align:center">加粗当前选中</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>H</code></td>
+<td style="text-align:center">替换当前选中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>I</code></td>
+<td style="text-align:center">倾斜当前选中</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>U</code></td>
+<td style="text-align:center">下划当前选中</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>K</code></td>
+<td style="text-align:center">将当前选中生成链接</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>J</code></td>
+<td style="text-align:center">滚动屏幕将选中滚至顶部</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>W</code></td>
+<td style="text-align:center">关闭当前窗口</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>N</code></td>
+<td style="text-align:center">打开新窗口</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>O</code></td>
+<td style="text-align:center">打开文件</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>P</code></td>
+<td style="text-align:center">搜索文件并打开</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>回车</code></td>
+<td style="text-align:center">表格下方插入行</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>,</code></td>
+<td style="text-align:center">打开偏好设置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>.</code></td>
+<td style="text-align:center">切换全角/半角标点</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>/</code></td>
+<td style="text-align:center">切换正常/源代码视图</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>-</code></td>
+<td style="text-align:center">缩小视图缩放</td>
+<td style="text-align:center"><code>Ctrl</code> + <code>Shift</code> + <code>+</code></td>
+<td style="text-align:center">放大视图缩放</td>
+</tr>
+</tbody>
+</table>
+<h2 id="五、总结">五、总结</h2>
+<p>typora是一款开源的markdown编辑器，给了人们很大的自由创作空间，且非常高效、简洁，相比word更加纯粹，另一方面长期使用typora，可培养程序化的思维，不管工作还是生活，都大有裨益。最后还可以用它写文章，也是一种相当不错的体验。:smile:</p>
+<p><a target="_blank" rel="noopener" href="https://mjtao1111.github.io/2025/03/11/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" title="hexo搭建个人博客">hexo搭建个人博客</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/">KeepStayTrue</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/">https://keepstaytrue.github.io/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://keepstaytrue.github.io" target="_blank">KeepStayTrue</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a><a class="post-meta__tags" href="/tags/typora/">typora</a></div><div class="post-share"><div class="social-share" data-image="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/image/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/image/wechat.jpg" alt="微信"/ loading='lazy'></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/image/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/image/alipay.jpg" alt="支付宝"/ loading='lazy'></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/18/Redis%E9%AB%98%E7%BA%A7-%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" title="分布式缓存"><img class="cover" src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125263.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">分布式缓存</div></div><div class="info-2"><div class="info-item-1">分布式缓存 – 基于Redis集群解决单机Redis存在的问题 单机的Redis存在四大问题：  0.学习目标 1.Redis持久化 Redis有两种持久化方案：  RDB持久化 AOF持久化  1.1.RDB持久化  RDB全称Redis Database Backup file（Redis数据备份文件），也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后，从磁盘读取快照文件，恢复数据。快照文件称为RDB文件，默认是保存在当前运行目录。  1.1.1.执行时机 RDB持久化在四种情况下会执行：  执行save命令 执行bgsave命令 Redis停机时 触发RDB条件时  1）save命令 执行下面的命令，可以立即执行一次RDB：  save命令会导致主进程执行RDB，这个过程中其它所有命令都会被阻塞。只有在数据迁移时可能用到。 2）bgsave命令 下面的命令可以异步执行RDB：  这个命令执行后会开启独立进程完成RDB，主进程可以持续处理用户请求，不受影响。 3）停机时 Redis停机时会执行一次save命令，实现RDB持久...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">KeepStayTrue</div><div class="author-info-description">记录自己走出迷茫路途中的点点滴滴</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" href="https://keepstaytrue.github.io/"><i class="fa-solid fa-bars"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/keepstaytrue" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/m0_64638272?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fas fa-book" style="color: #d81e06;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">typora学习手册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E3%80%81%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">一 、概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BD%E5%8F%8A%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、下载及安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E3%80%81%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C"><span class="toc-number">1.2.</span> <span class="toc-text">二 、使用手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、基本设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%96%87%E6%A1%A3%E7%BC%96%E8%BE%91%E7%9B%B8%E5%85%B3"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、文档编辑相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%A0%87%E9%A2%98"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.1 标题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%BC%BA%E8%B0%83"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.2 强调</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%96%9C%E4%BD%93"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">2.3 斜体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">2.4 删除线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E9%AB%98%E4%BA%AE"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">2.5 高亮</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E4%BB%A3%E7%A0%81"><span class="toc-number">1.2.2.6.</span> <span class="toc-text">2.6 代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.2.2.7.</span> <span class="toc-text">2.7 代码块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.2.8.</span> <span class="toc-text">2.8 引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.2.9.</span> <span class="toc-text">2.9 无序列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-10-%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.2.10.</span> <span class="toc-text">2.10 有序列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-11-%E4%B8%8A%E6%A0%87"><span class="toc-number">1.2.2.11.</span> <span class="toc-text">2.11 上标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-12-%E4%B8%8B%E6%A0%87"><span class="toc-number">1.2.2.12.</span> <span class="toc-text">2.12 下标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-13-%E4%B8%8B%E5%88%92%E7%BA%BF"><span class="toc-number">1.2.2.13.</span> <span class="toc-text">2.13 下划线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-14-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.2.14.</span> <span class="toc-text">2.14 注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-15-%E9%93%BE%E6%8E%A5"><span class="toc-number">1.2.2.15.</span> <span class="toc-text">2.15 链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-16-%E4%BB%BB%E5%8A%A1%E5%88%97%E8%A1%A8"><span class="toc-number">1.2.2.16.</span> <span class="toc-text">2.16 任务列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-17-%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.2.2.17.</span> <span class="toc-text">2.17 表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-18-%E5%9B%BE%E7%89%87"><span class="toc-number">1.2.2.18.</span> <span class="toc-text">2.18 图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-19-%E8%A1%A8%E6%83%85"><span class="toc-number">1.2.2.19.</span> <span class="toc-text">2.19 表情</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E3%80%81%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">三 、其他功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%9B%AE%E5%BD%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、数学公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E4%B8%BB%E9%A2%98%E6%A0%B7%E5%BC%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">3、主题样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%94%BB%E5%9B%BE"><span class="toc-number">1.3.4.</span> <span class="toc-text">4、画图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.4.</span> <span class="toc-text">四、常用快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">五、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" title="typora学习手册"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="typora学习手册"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" title="typora学习手册">typora学习手册</a><time datetime="2025-05-20T15:00:00.000Z" title="发表于 2025-05-20 23:00:00">2025-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/18/Redis%E9%9B%86%E7%BE%A4/" title="Redis集群"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125247.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis集群"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/18/Redis%E9%9B%86%E7%BE%A4/" title="Redis集群">Redis集群</a><time datetime="2025-05-18T15:00:00.000Z" title="发表于 2025-05-18 23:00:00">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/18/Redis%E9%AB%98%E7%BA%A7-%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" title="分布式缓存"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125263.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="分布式缓存"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/18/Redis%E9%AB%98%E7%BA%A7-%E5%88%86%E5%B8%83%E5%BC%8F%E7%BC%93%E5%AD%98/" title="分布式缓存">分布式缓存</a><time datetime="2025-05-18T15:00:00.000Z" title="发表于 2025-05-18 23:00:00">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/12/Redis%E5%AE%9E%E6%88%98%E7%AF%87/" title="实战篇Redis"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125274.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="实战篇Redis"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/12/Redis%E5%AE%9E%E6%88%98%E7%AF%87/" title="实战篇Redis">实战篇Redis</a><time datetime="2025-05-12T02:00:00.000Z" title="发表于 2025-05-12 10:00:00">2025-05-12</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125296.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By KeepStayTrue</span></div><div class="footer_custom_text"><img src="https://haiyong.site/img/icp.png" loading='lazy'><a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:black" target="_blank">苏ICP备24508978号-11010582026187</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,243,255" opacity="0.6" zIndex="-1" count="128" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
