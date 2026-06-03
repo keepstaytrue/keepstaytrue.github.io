@@ -129,13 +129,13 @@
       
         <tags>
             
+            <tag> 多级缓存 </tag>
+            
             <tag> OpenResty </tag>
             
             <tag> nginx </tag>
             
             <tag> Lua </tag>
-            
-            <tag> 多级缓存 </tag>
             
         </tags>
       
@@ -153,7 +153,7 @@
       
       <categories>
           
-          <category> Java后端求职学习体系 </category>
+          <category> [object Object] </category>
           
           <category> 中间件 </category>
           
@@ -221,7 +221,7 @@
       
       <categories>
           
-          <category> Java后端求职学习体系 </category>
+          <category> [object Object] </category>
           
           <category> 中间件 </category>
           
