@@ -129,13 +129,13 @@
       
         <tags>
             
+            <tag> 多级缓存 </tag>
+            
             <tag> OpenResty </tag>
             
             <tag> nginx </tag>
             
             <tag> Lua </tag>
-            
-            <tag> 多级缓存 </tag>
             
         </tags>
       
