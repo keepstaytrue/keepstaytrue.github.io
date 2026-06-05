@@ -1,0 +1,1131 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Maven 基础 | KeepStayTrue</title><meta name="author" content="KeepStayTrue"><meta name="copyright" content="KeepStayTrue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="Web后端基础(Maven 基础)  [!TIP] 课程内容：   初始 Maven Maven 概述  Maven 模型 Maven 仓库介绍 Maven 安装与配置   IDEA 集成 Maven 依赖管理 单元测试  初始 Maven 介绍  Maven 是一款用于管理和构建 Java 项目的工具，是 Apache 旗下的一个开源项目 。  Apache 软件基金会，成立于 1999 年 7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven 基础">
+<meta property="og:url" content="https://keepstaytrue.github.io/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="KeepStayTrue">
+<meta property="og:description" content="Web后端基础(Maven 基础)  [!TIP] 课程内容：   初始 Maven Maven 概述  Maven 模型 Maven 仓库介绍 Maven 安装与配置   IDEA 集成 Maven 依赖管理 单元测试  初始 Maven 介绍  Maven 是一款用于管理和构建 Java 项目的工具，是 Apache 旗下的一个开源项目 。  Apache 软件基金会，成立于 1999 年 7">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png">
+<meta property="article:published_time" content="2025-06-04T11:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-04T11:27:05.862Z">
+<meta property="article:author" content="KeepStayTrue">
+<meta property="article:tag" content="Maven">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Maven 基础",
+  "url": "https://keepstaytrue.github.io/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/",
+  "image": "https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png",
+  "datePublished": "2025-06-04T11:00:00.000Z",
+  "dateModified": "2026-06-04T11:27:05.862Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "KeepStayTrue",
+      "url": "https://keepstaytrue.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/image/logo.png"><link rel="canonical" href="https://keepstaytrue.github.io/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '0a0a0a')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 7 || hour >= 19
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ec88f9db978770ba0987b88800a5ee";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: KeepStayTrue","link":"链接: ","source":"来源: KeepStayTrue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#ff007f","bgDark":"#2a0a1f","position":"top-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Maven 基础',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="KeepStayTrue" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(/image/calm-bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/logo.png" alt="Logo" loading='lazy'><span class="site-name">KeepStayTrue</span></a><a class="nav-page-title" href="/"><span class="site-name">Maven 基础</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Maven 基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-04T11:00:00.000Z" title="发表于 2025-06-04 19:00:00">2025-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-04T11:27:05.862Z" title="更新于 2026-06-04 19:27:05">2026-06-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/">Java后端技术栈</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/">工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91-%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/">开发&amp;运维工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91-%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/">开发效率工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91-%E8%BF%90%E7%BB%B4%E5%B7%A5%E5%85%B7/%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/Maven/">Maven</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>24分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-06-04 19:27:05&quot;}" hidden></div><h1>Web后端基础(Maven 基础)</h1>
+<blockquote>
+<p>[!TIP]<br>
+课程内容：</p>
+</blockquote>
+<ul>
+<li>初始 Maven</li>
+<li>Maven 概述
+<ul>
+<li>Maven 模型</li>
+<li>Maven 仓库介绍</li>
+<li>Maven 安装与配置</li>
+</ul>
+</li>
+<li>IDEA 集成 Maven</li>
+<li>依赖管理</li>
+<li>单元测试</li>
+</ul>
+<h2 id="初始-Maven">初始 Maven</h2>
+<h3 id="介绍">介绍</h3>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/GUhabbo4uo55Igx8JuDcbZjcnrf.png" alt loading='lazy'></p>
+<p>Maven 是一款用于管理和构建 Java 项目的工具，是 Apache 旗下的一个开源项目 。</p>
+<blockquote>
+<p>Apache 软件基金会，成立于 1999 年 7 月，是目前世界上最大的最受欢迎的开源软件基金会，也是一个专门为支持开源项目而生的非盈利性组织。<br>
+开源项目：<a target="_blank" rel="noopener" href="https://www.apache.org/index.html#projects-list">https://www.apache.org/index.html#projects-list</a></p>
+</blockquote>
+<p>那我们之前在 JavaSE 阶段，没有使用 Maven，依然可以构建 Java 项目。 我们为什么现在还要学习 Maven 呢 ? 那接下来，我们就来聊聊 Maven 的作用。</p>
+<h3 id="Maven-的作用">Maven 的作用</h3>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/XtUKbfaGooYKBexwkNkcus4qnid.png" alt loading='lazy'></p>
+<h4 id="依赖管理">依赖管理</h4>
+<p>方便快捷的管理项目依赖的资源(jar 包)，避免版本冲突问题。</p>
+<p><strong>1). 使用 maven 前</strong></p>
+<p>我们项目中要想使用某一个 jar 包，就需要把这个 jar 包从官方网站下载下来，然后再导入到项目中。然后在这个项目中，就可以使用这个 jar 包了。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/QH0wb047QoPm2jxFmdEcBtNlnse.png" alt loading='lazy'></p>
+<p><strong>2). 使用 maven 后</strong></p>
+<p>当使用 maven 进行项目依赖(jar 包)管理，则很方便的可以解决这个问题。 我们只需要在 maven 项目的 pom.xml 文件中，添加一段如下图所示的配置即可实现。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/UiQGbswi1o2brIxkE3bc0WWSn4d.png" alt loading='lazy'></p>
+<p>在 maven 项目的配置文件中，加入上面这么一段配置信息之后，maven 会自动的根据配置信息的描述，去下载对应的依赖。 然后在项目中，就可以直接使用了。</p>
+<h4 id="项目构建">项目构建</h4>
+<p>Maven 还提供了标准化的跨平台的自动化构建方式。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/CtajbAcNZoZ1HKxzu2ucmiC7n0g.png" alt loading='lazy'></p>
+<p>如上图所示我们开发了一套系统，代码需要进行编译、测试、打包、发布等过程，这些操作是所有项目中都需要做的，如果需要反复进行就显得特别麻烦，而 Maven 提供了一套简单的命令来完成项目构建。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/VM5XbxoXvoEcFOx6AI9cZMAOnTg.png" alt loading='lazy'></p>
+<p>通过 Maven 中的命令，就可以很方便的完成项目的编译(compile)、测试(test)、打包(package)、发布(deploy) 等操作。</p>
+<p>而且这些操作都是跨平台的，也就是说无论你是 Windows 系统，还是 Linux 系统，还是 Mac 系统，这些命令都是支持的。</p>
+<h4 id="统一项目结构">统一项目结构</h4>
+<p>Maven 还提供了标准、统一的项目结构 。</p>
+<p><strong>1). 未使用 Maven</strong></p>
+<p>由于 java 的开发工具呢，有很多，除了大家熟悉的 IDEA 以外，还有像早期的 Eclipse、MyEclipse。而不同的开发工具，创建出来的 java 项目的目录结构是存在差异的，那这就会出现一个问题。</p>
+<p>Eclipse 创建的 java 项目，并不能直接导入 IDEA 中。 IDEA 创建的 java 项目，也没有办法直接导入到 Eclipse 中。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/LXXobGOjZoAm36xkYk6cs7EBnhg.png" alt loading='lazy'></p>
+<p><strong>2). 使用 Maven</strong></p>
+<p>而如果我们使用了 Maven 这一款项目构建工具，它给我们提供了一套标准的 java 项目目录。如下所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/YiKpb4voUoULkcxCVwDczS8bnBf.png" alt loading='lazy'></p>
+<p>也就意味着，无论我们使用的是什么开发工具，只要是基于 maven 构建的 java 项目，最终的目录结构都是相同的，如图所示。 那这样呢，我们使用 Eclipse、MyEclipse、IDEA 创建的 maven 项目，就可以在各个开发工具直接直接导入使用了，更加方便、快捷。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/EEH0bvuLsovj18xjpezcwdLxnGe.png" alt loading='lazy'></p>
+<p>而在上面的 maven 项目的目录结构中，main 目录下存放的是项目的源代码，test 目录下存放的是项目的测试代码。 而无论是在 main 还是在 test 下，都有两个目录，一个是 java，用来存放源代码文件；另一个是 resources，用来存放配置文件。</p>
+<p>最后呢，一句话总结一下什么是 Maven。 <strong>Maven 就是一款管理和构建 java 项目的工具。</strong></p>
+<p>Maven 的内容，我们进行了分层的设计和讲解，分为两个部分：Maven 核心和 Maven 进阶。 那今天，我们先来讲解 Maven 核心部分的内容，在 Web 开发的最后，我们再来讲解 Maven 进阶部分的内容。</p>
+<h2 id="Maven-概述">Maven 概述</h2>
+<h3 id="Maven-介绍">Maven 介绍</h3>
+<p>Apache Maven 是一个项目管理和构建工具，它基于项目对象模型(Project Object Model , 简称: POM)的概念，通过一小段描述信息来管理项目的构建、报告和文档。</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://maven.apache.org/">https://maven.apache.org/</a></p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/EF3mbhhi1oX4fPxwSgQcKEPbnvh.png" alt loading='lazy'></p>
+<p>Maven 的作用：</p>
+<ol>
+<li>方便的依赖管理</li>
+<li>统一的项目结构</li>
+<li>标准的项目构建流程</li>
+</ol>
+<h3 id="Maven-模型">Maven 模型</h3>
+<ul>
+<li>项目对象模型 (Project Object Model)</li>
+<li>依赖管理模型(Dependency)</li>
+<li>构建生命周期/阶段(Build lifecycle &amp; phases)</li>
+</ul>
+<p>1). 构建生命周期/阶段(Build lifecycle &amp; phases)</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/CpN9bkYMqo0WNJxX5N2caeYdnfj.png" alt loading='lazy'></p>
+<p>以上图中紫色框起来的部分，就是用来完成标准化构建流程 。当我们需要编译，Maven 提供了一个编译插件供我们使用；当我们需要打包，Maven 就提供了一个打包插件供我们使用等。</p>
+<p>2). 项目对象模型 (Project Object Model)</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/QbJJbaRu5ofCi8xf3dbcVjRFn9O.png" alt loading='lazy'></p>
+<p>以上图中紫色框起来的部分属于项目对象模型，就是将我们自己的项目抽象成一个对象模型，有自己专属的坐标，如下图所示是一个 Maven 项目：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/YMaEbUe6voeMz2xLa8acrInPnuc.png" alt loading='lazy'></p>
+<blockquote>
+<p>坐标，就是资源(jar 包)的唯一标识，通过坐标可以定位到所需资源(jar 包)位置。<br>
+坐标的组成部分：</p>
+<ul>
+<li>groupId: 组织名</li>
+<li>arfitactId: 模块名</li>
+<li>Version: 版本号</li>
+</ul>
+</blockquote>
+<p>3). 依赖管理模型(Dependency)</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/EUWbbqEuao03xsxXt2fcgsXcnQd.png" alt loading='lazy'></p>
+<p>以上图中紫色框起来的部分属于依赖管理模型，是使用坐标来描述当前项目依赖哪些第三方 jar 包。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/ITKEbWqksoyF9GxLHJccLw6PnGb.png" alt loading='lazy'></p>
+<p>之前我们项目中需要 jar 包时，直接就把 jar 包复制到项目下的 lib 目录，而现在我们只需要在 pom.xml 中配置依赖的配置文件即可。 而这个依赖对应的 jar 包其实就在我们本地电脑上的 maven 仓库中。</p>
+<p>如下图，就是老师本地的 maven 仓库中的 jar 文件：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PTQzbFPr9orUwnxWhyPcVqP3nZc.png" alt loading='lazy'></p>
+<h3 id="Maven-仓库">Maven 仓库</h3>
+<p>仓库：用于存储资源，管理各种 jar 包</p>
+<blockquote>
+<p><strong>仓库的本质</strong>就是一个目录(文件夹)，这个目录被用来存储开发中所有依赖(就是 jar 包)和插件</p>
+</blockquote>
+<p>Maven 仓库分为：</p>
+<ul>
+<li>本地仓库：自己计算机上的一个目录(用来存储 jar 包)</li>
+<li>中央仓库：由 Maven 团队维护的全球唯一的。仓库地址：<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/">https://repo1.maven.org/maven2/</a></li>
+<li>远程仓库(私服)：一般由公司团队搭建的私有仓库</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/RYnZb81mIoGj7rxRQ7HcA3ZEnfb.png" alt loading='lazy'></p>
+<p>当项目中使用坐标引入对应依赖 jar 包后，</p>
+<ul>
+<li>
+<p>首先会查找本地仓库中是否有对应的 jar 包</p>
+<ul>
+<li>如果有，则在项目直接引用</li>
+<li>如果没有，则去中央仓库中下载对应的 jar 包到本地仓库</li>
+</ul>
+</li>
+<li>
+<p>如果还可以搭建远程仓库(私服)，将来 jar 包的查找顺序则变为： 本地仓库 --&gt; 远程仓库–&gt; 中央仓库</p>
+</li>
+</ul>
+<h3 id="Maven-安装">Maven 安装</h3>
+<p>认识了 Maven 后，我们就要开始使用 Maven 了，那么首先我们要进行 Maven 的下载与安装。</p>
+<h4 id="下载">下载</h4>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">https://maven.apache.org/download.cgi</a></li>
+<li>在提供的资料中，已经提供了下载好的安装包。如下：</li>
+</ul>
+<h4 id="安装步骤">安装步骤</h4>
+<p>Maven 安装配置步骤：</p>
+<ol>
+<li>解压安装</li>
+<li>配置仓库</li>
+<li>配置阿里云私服</li>
+<li>配置 Maven 环境变量</li>
+</ol>
+<p><strong>1). 解压 apache-maven-3.9.4-bin.zip（解压即安装）</strong></p>
+<p>建议解压到没有中文、特殊字符的路径下。如课程中解压到 <code>E:\develop</code> 下。</p>
+<p>解压缩后的目录结构如下：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PREAbTQi4o4I4mxTDOccuZxYnDg.png" alt loading='lazy'></p>
+<ul>
+<li>bin 目录 ： 存放的是可执行命令。（mvn 命令重点关注）</li>
+<li>conf 目录 ：存放 Maven 的配置文件。（settings.xml 配置文件后期需要修改）</li>
+<li>lib 目录 ：存放 Maven 依赖的 jar 包。（Maven 也是使用 java 开发的，所以它也依赖其他的 jar 包）</li>
+</ul>
+<p><strong>2). 配置本地仓库</strong></p>
+<ol>
+<li>在自己计算机上新一个目录（本地仓库，用来存储 jar 包）</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/MwYcbNdgxogdJKx3yG9ckbSPnVf.png" alt loading='lazy'></p>
+<ol>
+<li>进入到 conf 目录下修改 <code>settings.xml</code> 配置文件
+<ol>
+<li>使用超级记事本软件，打开 settings.xml 文件，定位到 53 行</li>
+<li>复制 <code>&lt;localRepository&gt;</code> 标签，粘贴到注释的外面（55 行）</li>
+<li>复制之前新建的用来存储 jar 包的路径，替换掉 <code>&lt;localRepository&gt;</code> 标签体内容</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/WpRVbGTZFo4BNkx0LCaciFmWn6g.png" alt loading='lazy'></p>
+<p><strong>3). 配置阿里云私服</strong></p>
+<p>由于中央仓库在国外，所以下载 jar 包速度可能比较慢，而阿里公司提供了一个远程仓库，里面基本也都有开源项目的 jar 包。</p>
+<p>进入到 conf 目录下修改 settings.xml 配置文件：</p>
+<ol>
+<li>使用超级记事本软件，打开 settings.xml 文件，定位到 160 行左右</li>
+<li>在 <code>&lt;mirrors&gt;</code> 标签下为其添加子标签 <code>&lt;mirror&gt;</code>，内容如下：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意配置的位置，在 <code>&lt;mirrors&gt; ... &lt;/mirrors&gt;</code> 中间添加配置。如下图所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/CmX4b8ur3obbqAxneUYckLfHn1f.png" alt loading='lazy'></p>
+<p><strong>4).</strong>** 配置环境****变量**</p>
+<p>Maven 环境变量的配置类似于 JDK 环境变量配置一样</p>
+<ol>
+<li>在系统变量处新建一个变量 MAVEN_HOME。 MAVEN_HOME 环境变量的值，设置为 maven 的解压安装目录</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/RQf7bBg8soVW6dxqVRjcYLornhe.png" alt loading='lazy'></p>
+<ol>
+<li>在 Path 中进行配置。 PATH 环境变量的值，设置为：%MAVEN_HOME%\bin</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/V3ffbCcQkofYsjxs6AMcWotln4c.png" alt loading='lazy'></p>
+<ol>
+<li>打开 DOS 命令提示符进行验证，出现如图所示表示安装成功 。</li>
+</ol>
+<p>命令为：<strong>mvn -v</strong></p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/HqYpbbmFdolqjSx4YL8ciM6Bn2s.png" alt loading='lazy'></p>
+<p><strong>5). 配置关联的 JDK<strong><strong>版</strong></strong>本(<strong><strong>可选</strong></strong>)</strong></p>
+<p>进入到 conf 目录下修改 settings.xml 配置文件，在 <code>&lt;profiles&gt; &lt;/profiles&gt;</code> 中增加如下配置:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>profile<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>id<span class="operator">&gt;</span>jdk<span class="number">-17</span><span class="operator">&lt;</span><span class="operator">/</span>id<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>activation<span class="operator">&gt;</span></span><br><span class="line">                <span class="operator">&lt;</span>activeByDefault<span class="operator">&gt;</span><span class="literal">true</span><span class="operator">&lt;</span><span class="operator">/</span>activeByDefault<span class="operator">&gt;</span></span><br><span class="line">                <span class="operator">&lt;</span>jdk<span class="operator">&gt;</span><span class="number">17</span><span class="operator">&lt;</span><span class="operator">/</span>jdk<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span><span class="operator">/</span>activation<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span>properties<span class="operator">&gt;</span></span><br><span class="line">                <span class="operator">&lt;</span>maven.compiler.source<span class="operator">&gt;</span><span class="number">17</span><span class="operator">&lt;</span><span class="operator">/</span>maven.compiler.source<span class="operator">&gt;</span></span><br><span class="line">                <span class="operator">&lt;</span>maven.compiler.target<span class="operator">&gt;</span><span class="number">17</span><span class="operator">&lt;</span><span class="operator">/</span>maven.compiler.target<span class="operator">&gt;</span></span><br><span class="line">                <span class="operator">&lt;</span>maven.compiler.compilerVersion<span class="operator">&gt;</span><span class="number">17</span><span class="operator">&lt;</span><span class="operator">/</span>maven.compiler.compilerVersion<span class="operator">&gt;</span></span><br><span class="line">        <span class="operator">&lt;</span><span class="operator">/</span>properties<span class="operator">&gt;</span></span><br><span class="line"><span class="operator">&lt;</span><span class="operator">/</span>profile<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="IDEA-集成-Maven">IDEA 集成 Maven</h2>
+<p>我们要想在 IDEA 中使用 Maven 进行项目构建，就需要在 IDEA 中集成 Maven，那么就需要在 IDEA 中配置与 maven 的关联。</p>
+<h3 id="创建-Maven-项目">创建 Maven 项目</h3>
+<h4 id="全局设置">全局设置</h4>
+<ol>
+<li>进入 IDEA 的欢迎页面<br>
+选择 IDEA 中 File  =&gt;  <code>close project</code> =&gt; <code>Customize</code> =&gt; <code>All settings</code><br>
+<img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/ImHsbqLLJoGpCIxE8nGcpdTTn1e.gif" alt loading='lazy'></li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/D4RXbOlWwoUMQQxKJdIcPAnRnob.png" alt loading='lazy'></p>
+<ol>
+<li>打开 All settings , 选择 <code>Build,Execution,Deployment</code>  =&gt;  <code>Build Tools</code>  =&gt;  <code>Maven</code></li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/BNMfb2rZnobLl9xQiXQcsWDUnkf.png" alt loading='lazy'></p>
+<ol>
+<li>配置工程的编译版本为 17</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/QXKGbjmsKoaLswxYGwKcyfPgnHh.png" alt loading='lazy'></p>
+<p>这里所设置的 maven 的环境信息，并未指定任何一个 project，此时设置的信息就属于全局配置信息。 以后，我们再创建 project，默认就是使用我们全局配置的信息。</p>
+<h4 id="创建项目">创建项目</h4>
+<ol>
+<li>创建一个空项目，命名为 web-project01</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/FuxbbenjAoVm2wxv8u3cIvhJnif.png" alt loading='lazy'></p>
+<ol>
+<li>创建好项目之后，进入项目中，要设置 JDK 的版本号。选择小齿轮，选择 <strong>Project Structure</strong></li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/S5lybyTa7osesIxJgSMcoRz4nof.png" alt loading='lazy'></p>
+<ol>
+<li>创建模块，选择 Java 语言，选择 Maven。 填写模块的基本信息</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/MVuJbxTpboW6YlxlpsLcw2g8nPf.png" alt loading='lazy'></p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/GgEBb6oUNo5sUQxFSmDcDoJYnTr.png" alt loading='lazy'></p>
+<ol>
+<li>在 maven 项目中，创建 HelloWorld 类，并运行</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/JgYsbwmRSoCTgwxGsT3c99zLnsh.png" alt loading='lazy'></p>
+<blockquote>
+<p>[!TIP]<br>
+<strong>Maven 项目的目录结构:</strong><br>
+<strong>maven-project01</strong><br>
+|—  src  (源代码目录和测试代码目录)<br>
+|—  main (源代码目录)<br>
+|— java (源代码 java 文件目录)<br>
+|— resources (源代码配置文件目录)<br>
+|—  test (测试代码目录)<br>
+|— java (测试代码 java 目录)<br>
+|— resources (测试代码配置文件目录)<br>
+|— target (编译、打包生成文件存放目录)</p>
+</blockquote>
+<h4 id="pom-文件详解">pom 文件详解</h4>
+<p>POM (Project Object Model) ：指的是项目对象模型，用来描述当前的 maven 项目。</p>
+<ul>
+<li>使用 pom.xml 文件来描述当前项目。 pom.xml 文件如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">_&lt;?_xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;_?&gt;_</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- POM模型版本 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 当前项目坐标 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.itheima<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-project01<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 项目的JDK版本及编码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>17<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>pom 文件详解：</strong></p>
+<ul>
+<li>
+<p><code>&lt;project&gt;`` </code>：pom 文件的根标签，表示当前 maven 项目</p>
+</li>
+<li>
+<p><code>&lt;modelVersion&gt;</code>：声明项目描述遵循哪一个 POM 模型版本</p>
+<ul>
+<li>虽然模型本身的版本很少改变，但它仍然是必不可少的。目前 POM 模型版本是 4.0.0</li>
+</ul>
+</li>
+<li>
+<p>坐标 ：</p>
+<ul>
+<li><code>&lt;groupId&gt;</code> <code>&lt;artifactId&gt;</code> <code>&lt;version&gt;</code></li>
+<li>定位项目在本地仓库中的位置，由以上三个标签组成一个坐标</li>
+</ul>
+</li>
+<li>
+<p><code>&lt;maven.compiler.source&gt;</code> ：编译 JDK 的版本</p>
+</li>
+<li>
+<p><code>&lt;maven.compiler.target&gt;</code> ：运行 JDK 的版本</p>
+</li>
+<li>
+<p><code>&lt;project.build.sourceEncoding&gt;</code> : 设置项目的字符集</p>
+</li>
+</ul>
+<h3 id="Maven-坐标">Maven 坐标</h3>
+<p>什么是坐标？</p>
+<ul>
+<li>Maven 中的坐标是<strong>资源****的唯一标识</strong> , 通过该坐标可以唯一定位资源位置</li>
+<li>使用坐标来定义项目或引入项目中需要的依赖</li>
+</ul>
+<p>Maven 坐标主要组成：</p>
+<ul>
+<li>
+<p>groupId：定义当前 Maven 项目隶属组织名称（通常是域名反写，例如：com.itheima）</p>
+</li>
+<li>
+<p>artifactId：定义当前 Maven 项目名称（通常是模块名称，例如 order-service、goods-service）</p>
+</li>
+<li>
+<p>version：定义当前项目版本号</p>
+<ul>
+<li>SNAPSHOT: 功能不稳定、尚处于开发中的版本，即快照版本</li>
+<li>RELEASE: 功能趋于稳定、当前更新停止，可以用于发行的版本</li>
+</ul>
+</li>
+</ul>
+<p>如下图就是使用坐标表示一个项目：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/HHl7bROBdoPgDSxPeYtcKpk4nib.png" alt loading='lazy'></p>
+<blockquote>
+<p><strong>注意：</strong></p>
+<ul>
+<li>上面所说的资源可以是插件、依赖、当前项目。</li>
+<li>我们的项目如果被其他的项目依赖时，也是需要坐标来引入的。</li>
+</ul>
+</blockquote>
+<h3 id="导入-Maven-项目">导入 Maven 项目</h3>
+<p>在 IDEA 中导入 Maven 项目，有两种方式。</p>
+<ul>
+<li>方式一：<code>File</code> -&gt; <code>Project Structure</code> -&gt; <code>Modules</code> -&gt; <code>Import Module</code> -&gt; <code>选择maven项目的pom.xml</code>。</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/BqnBbtpz9ohEd8xYFvvcu2xAnsh.png" alt loading='lazy'></p>
+<ul>
+<li>方式二：<code>Maven面板</code> -&gt; <code>+（Add Maven Projects）</code> -&gt; <code>选择maven项目的pom.xml</code>。</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/XTwnbmcuPoSEWSxeguHcEFhjngd.png" alt loading='lazy'></p>
+<h2 id="依赖管理-2">依赖管理</h2>
+<h3 id="依赖配置">依赖配置</h3>
+<h4 id="基本配置">基本配置</h4>
+<p>依赖：指当前项目运行所需要的 jar 包。一个项目中可以引入多个依赖：</p>
+<p>例如：在当前工程中，我们需要用到 logback 来记录日志，此时就可以在 maven 工程的 pom.xml 文件中，引入 logback 的依赖。具体步骤如下：</p>
+<ol>
+<li>在 pom.xml 中编写 <code>&lt;dependencies&gt;</code> 标签</li>
+<li>在 <code>&lt;dependencies&gt;</code> 标签中使用 <code>&lt;dependency&gt;</code> 引入坐标</li>
+<li>定义坐标的 <code>groupId</code>、<code>artifactId</code>、<code>version</code></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 依赖 : spring-context --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>点击刷新按钮，引入最新加入的坐标</li>
+</ol>
+<p>刷新依赖：保证每一次引入新的依赖，或者修改现有的依赖配置，都可以加入最新的坐标</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/C8i5bRSD4ouqSjxvEfMcQHlmncc.png" alt loading='lazy'></p>
+<blockquote>
+<p>[!TIP]<br>
+<strong>注意事项：</strong></p>
+</blockquote>
+<ol>
+<li>如果引入的依赖，在本地仓库中不存在，将会连接远程仓库 / 中央仓库，然后下载依赖（这个过程会比较耗时，耐心等待）</li>
+<li>如果不知道依赖的坐标信息，可以到 mvn 的中央仓库（<a target="_blank" rel="noopener" href="https://mvnrepository.com/">https://mvnrepository.com/</a>）中搜索</li>
+</ol>
+<h4 id="查找依赖"><strong>查找依赖</strong></h4>
+<ol>
+<li>利用中央仓库搜索的依赖坐标，以常见的 logback-classic 为例。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/YO94bkQYvoNjNVxrIpecQuW8ntd.gif" alt loading='lazy'></p>
+<ol>
+<li>利用 IDEA 工具搜索依赖，以常见的 logback-classic 为例。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/LZJEbXRv3o9MtUxceqgc2JVmnER.gif" alt loading='lazy'></p>
+<ol>
+<li>熟练上手 maven 后，快速导入依赖，以常见的 logback-classic 为例。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/E7mFbhNfjowVe6xfG4ZcCu18n5g.gif" alt loading='lazy'></p>
+<h4 id="依赖传递">依赖传递</h4>
+<p>我们上面在 pom.xml 中配置了一项依赖，就是 spring-context，但是我们通过右侧的 maven 面板可以看到，其实引入进来的依赖，并不是这一项，有非常多的依赖，都引入进来了。我们可以看到如下图所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/SasRbAQeUohqzcx8Ti2cRZ1Mnzg.png" alt loading='lazy'></p>
+<p>为什么会出现这样的现象呢? 那这里呢，就涉及到 maven 中非常重要的一个特性，那就是 Maven 中的<strong>依赖传递</strong>。</p>
+<p>所谓 maven 的依赖传递，指的就是如果在 maven 项目中，A 依赖了 B，B 依赖了 C，C 依赖了 D，那么在 A 项目中，也会有 C、D 依赖，因为依赖会传递。</p>
+<p>那如果，传递下来的依赖，在项目开发中，我们确实不需要，此时，我们可以通过 Maven 中的排除依赖功能，来将这个依赖排除掉。</p>
+<h4 id="排除依赖">排除依赖</h4>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/EK2ibh6Hho5Z8FxnvQecW6DJnKc.png" alt loading='lazy'></p>
+<ul>
+<li>排除依赖：指主动断开依赖的资源，被排除的资源无需指定版本。</li>
+<li>配置形式如下：</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--排除依赖, 主动断开依赖的资源--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-observation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>依赖排除示例：</strong></p>
+<ol>
+<li>默认通过 maven 的依赖传递，传递下来了 <code>micrometer-observation</code> 的依赖。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/TUIvbVLkuo4Q9SxTCy6cGbltn4e.png" alt loading='lazy'></p>
+<ol>
+<li>加入排除依赖的配置之后，该依赖就被排除掉了。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/AKnEbY5PQo9VddxgztccsGWQnEg.png" alt loading='lazy'></p>
+<h3 id="生命周期">生命周期</h3>
+<h4 id="介绍-2">介绍</h4>
+<p>Maven 的生命周期就是为了对所有的构建过程进行抽象和统一。 描述了一次项目构建，经历哪些阶段。</p>
+<p>在 Maven 出现之前，项目构建的生命周期就已经存在，软件开发人员每天都在对项目进行清理，编译，测试及部署。虽然大家都在不停地做构建工作，但公司和公司间、项目和项目间，往往使用不同的方式做类似的工作。</p>
+<p>Maven 从大量项目和构建工具中学习和反思，然后总结了一套高度完美的，易扩展的项目构建生命周期。这个生命周期包含了项目的清理，初始化，编译，测试，打包，集成测试，验证，部署和站点生成等几乎所有构建步骤。</p>
+<p>Maven 对项目构建的生命周期划分为 3 套（相互独立）：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/YLbGb25LaoZJbqxXjNlc6TWenSg.png" alt loading='lazy'></p>
+<ul>
+<li>clean：清理工作。</li>
+<li>default：核心工作。如：编译、测试、打包、安装、部署等。</li>
+<li>site：生成报告、发布站点等。</li>
+</ul>
+<p>三套生命周期又包含哪些具体的阶段呢, 我们来看下面这幅图:</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/W0GKbMT6PoZVToxNEKEcSFN7nGF.png" alt loading='lazy'></p>
+<p>每套生命周期包含一些阶段（phase），阶段是有顺序的，后面的阶段依赖于前面的阶段。</p>
+<p>我们看到这三套生命周期，里面有很多很多的阶段，这么多生命周期阶段，其实我们常用的并不多，主要关注以下几个：</p>
+<ul>
+<li>clean：移除上一次构建生成的文件</li>
+<li>compile：编译项目源代码</li>
+<li>test：使用合适的单元测试框架运行测试(junit)</li>
+<li>package：将编译后的文件打包，如：jar、war 等</li>
+<li>install：安装项目到本地仓库</li>
+</ul>
+<p>Maven 的生命周期是抽象的，这意味着生命周期本身不做任何实际工作。<strong>在 Maven 的设计中，实际任务（如源代码编译）都交由<strong><strong>插件</strong></strong>来完成。</strong></p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/XzSvb8eplowdRpxhujjc5gvhnSd.png" alt loading='lazy'></p>
+<p>IDEA 工具为了方便程序员使用 maven 生命周期，在右侧的 maven 工具栏中，已给出快速访问通道。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PSYmbxbodoKsfrx2ItZcKCzJnnb.png" alt loading='lazy'></p>
+<ul>
+<li>生命周期的顺序是：<code>clean</code> --&gt; <code>validate</code> --&gt; <code>compile</code> --&gt; <code>test</code> --&gt; <code>package</code> --&gt; <code>verify</code> --&gt; <code>install</code> --&gt; <code>site</code> --&gt; <code>deploy</code></li>
+<li>我们需要关注的就是：<code>clean</code> --&gt;  <code>compile</code> --&gt; <code>test</code> --&gt; <code>package</code>  --&gt; <code>install</code></li>
+</ul>
+<blockquote>
+<p>[!TIP]<br>
+**说明：**在同一套生命周期中，我们在执行后面的生命周期时，前面的生命周期都会执行。</p>
+</blockquote>
+<blockquote>
+<p>[!TIP]<br>
+**思考：**当运行 package 生命周期时，clean、compile 生命周期会不会运行？<br>
+clean 不会运行，compile 会运行。  因为 compile 与 package 属于同一套生命周期，而 clean 与 package 不属于同一套生命周期。</p>
+</blockquote>
+<h4 id="执行">执行</h4>
+<p>在日常开发中，当我们要执行指定的生命周期时，有两种执行方式：</p>
+<ol>
+<li>在 idea 工具右侧的 maven 工具栏中，选择对应的生命周期，双击执行</li>
+<li>在 DOS 命令行中，通过 maven 命令执行</li>
+</ol>
+<p><strong>方式一：在 idea 中执行生命周期</strong></p>
+<ul>
+<li>选择对应的生命周期，双击执行</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/EyombySTSofRnBxe6wbcFyw2nTf.png" alt loading='lazy'></p>
+<p>其他的生命周期都是类似的道理，双击运行即可。</p>
+<p><strong>方式二：在命令行中执行生命周期</strong></p>
+<ol>
+<li>打开 maven 项目对应的磁盘目录</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PtEUbyuTWoHUSdxAJn8cVXufn4d.png" alt loading='lazy'></p>
+<ol>
+<li>在当前目录下打开 CMD</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/FEsGbAhNPommtOxLzw7cunsWn1b.png" alt loading='lazy'></p>
+<p>类似的道理，我们也可以在命令执行：</p>
+<ul>
+<li>mvn compile</li>
+<li>mvn test</li>
+<li>mvn package</li>
+<li>mvn install</li>
+</ul>
+<h2 id="单元测试">单元测试</h2>
+<h3 id="介绍-3">介绍</h3>
+<p>**测试：**是一种用来促进鉴定软件的正确性、完整性、安全性和质量的过程。</p>
+<p>**阶段划分：**单元测试、集成测试、系统测试、验收测试。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PBWYbxGi9otvGUxUKmacqmkpn2c.png" alt loading='lazy'></p>
+<p>1). 单元测试</p>
+<ul>
+<li>介绍：对软件的基本组成单位进行测试，最小测试单位。</li>
+<li>目的：检验软件基本组成单位的正确性。</li>
+<li>测试人员：开发人员</li>
+</ul>
+<p>2). 集成测试</p>
+<ul>
+<li>介绍：将已分别通过测试的单元，按设计要求组合成系统或子系统，再进行的测试。</li>
+<li>目的：检查单元之间的协作是否正确。</li>
+<li>测试人员：开发人员</li>
+</ul>
+<p>3). 系统测试</p>
+<ul>
+<li>介绍：对已经集成好的软件系统进行彻底的测试。</li>
+<li>目的：验证软件系统的正确性、性能是否满足指定的要求。</li>
+<li>测试人员：测试人员</li>
+</ul>
+<p>4). 验收测试</p>
+<ul>
+<li>介绍：交付测试，是针对用户需求、业务流程进行的正式的测试。</li>
+<li>目的：验证软件系统是否满足验收标准。</li>
+<li>测试人员：客户/需求方</li>
+</ul>
+<p>**测试方法：**白盒测试、黑盒测试 及 灰盒测试。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/PrYPbasZ2ozsiZxfAnSc4fZqnjc.png" alt loading='lazy'></p>
+<p>1). 白盒测试</p>
+<p>清楚软件内部结构、代码逻辑。</p>
+<p>用于验证代码、逻辑正确性。</p>
+<p>2). 黑盒测试</p>
+<p>不清楚软件内部结构、代码逻辑。</p>
+<p>用于验证软件的功能、兼容性、验收测试等方面。</p>
+<p>3). 灰盒测试</p>
+<p>结合了白盒测试和黑盒测试的特点，既关注软件的内部结构又考虑外部表现（功能）。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/FmFTbztShoE5XaxJosgcGz4Znce.png" alt loading='lazy'></p>
+<h3 id="Junit-入门">Junit 入门</h3>
+<h4 id="单元测试-2">单元测试</h4>
+<ul>
+<li>单元测试：就是针对最小的功能单元(方法)，编写测试代码对其正确性进行测试。</li>
+<li>JUnit：最流行的 Java 测试框架之一，提供了一些功能，方便程序进行单元测试（第三方公司提供）。</li>
+</ul>
+<p>在之前的课程中，我们进行程序的测试 ，都是 main 方法中进行测试 。如下图所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/JnMvbKeeLoLia5xy9vIcWC6nn1d.png" alt loading='lazy'></p>
+<p>通过 <strong>main 方法</strong>是可以进行测试的，可以测试程序是否正常运行。但是 main 方法进行测试时，会存在如下问题：</p>
+<ol>
+<li>测试代码与源代码未分开，难维护。</li>
+<li>一个方法测试失败，影响后面方法。</li>
+<li>无法自动化测试，得到测试报告。</li>
+</ol>
+<p>而如果我们使用了 <strong>JUnit 单元测试</strong>框架进行测试，将会有以下优势：</p>
+<ol>
+<li>测试代码与源代码分开，便于维护。</li>
+<li>可根据需要进行自动化测试。</li>
+<li>可自动分析测试结果，产出测试报告。</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/TbHSbHpEFoLbXox9A14cpUuynhd.png" alt loading='lazy'></p>
+<h4 id="入门程序">入门程序</h4>
+<p>需求：使用 JUnit，对 UserService 中的业务方法进行单元测试，测试其正确性。</p>
+<ol>
+<li>在 <code>pom.xml</code> 中，引入 JUnit 的依赖。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Junit单元测试依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.jupiter<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-jupiter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>在 test/java 目录下，创建测试类，并编写对应的测试方法，并在方法上声明 @Test 注解。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetAge</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">age</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getAge(<span class="string">&quot;110002200505091218&quot;</span>);</span><br><span class="line">    System.out.println(age);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>运行单元测试 (测试通过：绿色；测试失败：红色)。</li>
+</ol>
+<ul>
+<li>测试通过显示绿色</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/JnXJbsaGGozqJoxEFVxcT7nFnle.png" alt loading='lazy'></p>
+<ul>
+<li>测试失败显示红色</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/IuCybs3QEoRuaKxSyVWcvd3OnDg.png" alt loading='lazy'></p>
+<blockquote>
+<p>[!TIP]<br>
+** 注意：**</p>
+</blockquote>
+<ul>
+<li>测试类的命名规范为：XxxxTest</li>
+<li>测试方法的命名规定为：public void xxx(){…}</li>
+</ul>
+<h3 id="断言">断言</h3>
+<p>JUnit 提供了一些辅助方法，用来帮我们确定被测试的方法是否按照预期的效果正常工作，这种方式称为<strong>断言</strong>。</p>
+<p>示例演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.params.ParameterizedTest;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.params.provider.ValueSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetAge2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">age</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getAge(<span class="string">&quot;110002200505091218&quot;</span>);</span><br><span class="line">        Assertions.assertNotEquals(<span class="number">18</span>, age, <span class="string">&quot;两个值相等&quot;</span>);</span><br><span class="line"><span class="comment">//        String s1 = new String(&quot;Hello&quot;);</span></span><br><span class="line"><span class="comment">//        String s2 = &quot;Hello&quot;;</span></span><br><span class="line"><span class="comment">//        Assertions.assertSame(s1, s2, &quot;不是同一个对象引用&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetGender2</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getGender(<span class="string">&quot;612429198904201611&quot;</span>);</span><br><span class="line">        Assertions.assertEquals(<span class="string">&quot;男&quot;</span>, gender);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试结果输出：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/FiX9bENvdoeOADxm0A4cSUxLnje.png" alt loading='lazy'></p>
+<h3 id="常见注解">常见注解</h3>
+<p>在 JUnit 中还提供了一些注解，还增强其功能，常见的注解有以下几个：</p>
+<p>演示 <code>@BeforeEach</code>，<code>@AfterEach</code>，<code>@BeforeAll</code>，<code>@AfterAll</code> 注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBefore</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;before...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterEach</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testAfter</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;after...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeAll</span> <span class="comment">//该方法必须被static修饰</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testBeforeAll</span><span class="params">()</span>&#123; </span><br><span class="line">        System.out.println(<span class="string">&quot;before all ...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AfterAll</span> <span class="comment">//该方法必须被static修饰</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">testAfterAll</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;after all...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetAge</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">age</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getAge(<span class="string">&quot;110002200505091218&quot;</span>);</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetGender</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getGender(<span class="string">&quot;612429198904201611&quot;</span>);</span><br><span class="line">        System.out.println(gender);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/NroKb8167oiG5txW2wMcbd0KnUe.png" alt loading='lazy'></p>
+<p>演示 <code>@ParameterizedTest  </code>，<code>@ValueSource</code> ，<code>@DisplayName</code> 注解：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.itheima;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.*;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.params.ParameterizedTest;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.params.provider.ValueSource;</span><br><span class="line"></span><br><span class="line"><span class="meta">@DisplayName(&quot;测试-学生业务操作&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceTest</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DisplayName(&quot;测试-获取年龄&quot;)</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetAge</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">age</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getAge(<span class="string">&quot;110002200505091218&quot;</span>);</span><br><span class="line">        System.out.println(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DisplayName(&quot;测试-获取性别&quot;)</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetGender</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getGender(<span class="string">&quot;612429198904201611&quot;</span>);</span><br><span class="line">        System.out.println(gender);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DisplayName(&quot;测试-获取性别3&quot;)</span></span><br><span class="line">    <span class="meta">@ParameterizedTest</span></span><br><span class="line">    <span class="meta">@ValueSource(strings = &#123;&quot;612429198904201611&quot;,&quot;612429198904201631&quot;,&quot;612429198904201626&quot;&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGetGender3</span><span class="params">(String idcard)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">gender</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserService</span>().getGender(idcard);</span><br><span class="line">         System.out.println(gender);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果如下：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/Ow5ubHVpgoVCTMxb1QccbyPAn2e.png" alt loading='lazy'></p>
+<p>**思考: 在 maven 项目中，test 目录存放单元测试的代码，是否可以在 main 目录中编写单元测试呢 ？ **<strong>可以，但是不规范</strong></p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/A2VVbtShSoYUtFxNjK3cTCa5nxg.png" alt loading='lazy'></p>
+<h3 id="依赖范围">依赖范围</h3>
+<p>依赖的 jar 包，默认情况下，可以在任何地方使用，在 main 目录下，可以使用；在 test 目录下，也可以使用。</p>
+<p>在 maven 中，如果希望限制依赖的使用范围，可以通过 <code>&lt;scope&gt;…&lt;/scope&gt;</code> 设置其作用范围。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/RqbLb1PBKoqoWqxMgjDcmRYFnrd.png" alt loading='lazy'></p>
+<p><strong>作用范围：</strong></p>
+<ul>
+<li>主程序范围有效。（main 文件夹范围内）</li>
+<li>测试程序范围有效。（test 文件夹范围内）</li>
+<li>是否参与打包运行。（package 指令范围内）</li>
+</ul>
+<p>可以在 pom.xml 中配置 <code>&lt;scope&gt;&lt;/scope&gt;</code> 属性来控制依赖范围。</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/F9ccbOffSok6WHxoWLXciLJonKg.png" alt loading='lazy'></p>
+<p>如果对 Junit 单元测试的依赖，设置了 scope 为 test，就代表，该依赖，只是在测试程序中可以使用，在主程序中是无法使用的。所以我们会看到如下现象：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/ChaKbRUjao5R9txzTvIcbHODnWg.png" alt loading='lazy'></p>
+<p>如上图所示，给 junit 依赖通过 scope 标签指定依赖的作用范围。 那么这个依赖就只能作用在测试环境，其他环境下不能使用。</p>
+<p>scope 的取值常见的如下：</p>
+<h2 id="Maven-常见问题">Maven 常见问题</h2>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/HHoMbmc5yoP574xXDDAcaN1Rnoc.png" alt loading='lazy'></p>
+<ul>
+<li>**问题现象：**Maven 项目中添加的依赖，未正确下载，造成右侧 Maven 面板中的依赖报红，再次 reload 重新加载也不会再下载。</li>
+<li><strong>产生原因：<strong>由于网络原因，依赖没有下载完整导致的，在 maven 仓库中生成了</strong> xxx.lastUpdated</strong>文件，该文件不删除，不会再重新下载。</li>
+</ul>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/UygQb4W4ho9MuSxhFWQcoK4FnVf.png" alt loading='lazy'></p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>根据 maven 依赖的坐标，找到仓库中对应的 xxx.lastUpdated 文件，删除，删除之后重新加载项目即可。</li>
+<li>通过命令 (del /s *.lastUpdated) 批量递归删除指定目录下的 xxx.lastUpdated 文件，删除之后重新加载项目即可。</li>
+<li>重新加载依赖，依赖下载了之后，maven 面板可能还会报红，此时可以关闭 IDEA，重新打开 IDEA 加载此项目即可。</li>
+</ol>
+<p>为了使大家能够方便的解决这个问题，大家可以将资料中提供的 del.bat 批处理脚本，拷贝到 maven 的安装目录下。 双击这个文件，就可以递归删除该目录下所有的 xxx.lastUpdated 文件。 放置目录如下所示：</p>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/TBfFbWyb9oAac8xhHThcz6Vsnee.png" alt loading='lazy'></p>
+<ul>
+<li><strong>附件（上述提到的 del.bat 批处理文件， 也可以直接点此下载）：</strong></li>
+</ul>
+<p>Maven进阶<br>
+分模块设计<br>
+继承<br>
+聚合<br>
+私服</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/">KeepStayTrue</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/">https://keepstaytrue.github.io/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://keepstaytrue.github.io" target="_blank">KeepStayTrue</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Maven/">Maven</a></div><div class="post-share"><div class="social-share" data-image="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/image/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/image/wechat.jpg" alt="微信"/ loading='lazy'></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/image/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/image/alipay.jpg" alt="支付宝"/ loading='lazy'></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/06/04/%E5%89%8D%E7%AB%AF%20Web%20%E5%BC%80%E5%8F%91/" title="Web前端开发"><img class="cover" src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125274.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Web前端开发</div></div><div class="info-2"><div class="info-item-1">01-前端 Web 开发(HTML+CSS) 初识 Web 前端 介绍 我们介绍 Web 网站工作流程的时候提到，前端开发，主要的职责就是将数据以好看的样式呈现出来。说白了，就是开发网页程序，如下图所示：  主要明确以下三个问题： 1). 网页由哪些部分组成 ?  文字、图片、音频、视频、超链接、表格等等。  2). 我们看到的网页，背后的本质是什么 ?  前端程序员写的前端代码 (备注：在前后端分离的开发模式中)  3). 前端的代码是如何转换成用户眼中的网页的 ?  通过浏览器转化（解析和渲染）成用户看到的网页 浏览器中对代码进行解析和渲染的部分，称为 浏览器内核  而市面上的浏览器非常多，比如：IE、火狐 Firefox、苹果 safari、欧朋、谷歌 Chrome、QQ 浏览器、360 浏览器等等。 而且我们电脑上安装的浏览器可能都不止一个，有很多。  但是呢，需要大家注意的是，不同的浏览器，内核不同，对于相同的前端代码解析的效果也会存在差异。 那这就会造成一个问题，同一段前端程序，不同浏览器展示出来的效果是不一样的，这个用户体验就很差了。而我们想达到的效果则是，即使用户...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">KeepStayTrue</div><div class="author-info-description">业精于勤荒于嬉,行成于思毁于随</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">11</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/keepstaytrue"><i class="fa-solid fa-bars"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/keepstaytrue" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/m0_64638272?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fas fa-book" style="color: #d81e06;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Web后端基础(Maven 基础)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B-Maven"><span class="toc-number">1.1.</span> <span class="toc-text">初始 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">Maven 的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">依赖管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">项目构建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">统一项目结构</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.2.</span> <span class="toc-text">Maven 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">Maven 介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.2.2.</span> <span class="toc-text">Maven 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E4%BB%93%E5%BA%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">Maven 仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.4.</span> <span class="toc-text">Maven 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">安装步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA-%E9%9B%86%E6%88%90-Maven"><span class="toc-number">1.3.</span> <span class="toc-text">IDEA 集成 Maven</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-Maven-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.1.</span> <span class="toc-text">创建 Maven 项目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">全局设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pom-%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">pom 文件详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven-%E5%9D%90%E6%A0%87"><span class="toc-number">1.3.2.</span> <span class="toc-text">Maven 坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5-Maven-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.3.3.</span> <span class="toc-text">导入 Maven 项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86-2"><span class="toc-number">1.4.</span> <span class="toc-text">依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">依赖配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">基本配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E4%BE%9D%E8%B5%96"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">查找依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E4%BC%A0%E9%80%92"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">依赖传递</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%92%E9%99%A4%E4%BE%9D%E8%B5%96"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">排除依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.4.2.</span> <span class="toc-text">生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">执行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">1.5.</span> <span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-3"><span class="toc-number">1.5.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Junit-%E5%85%A5%E9%97%A8"><span class="toc-number">1.5.2.</span> <span class="toc-text">Junit 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-2"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">入门程序</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%AD%E8%A8%80"><span class="toc-number">1.5.3.</span> <span class="toc-text">断言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.5.4.</span> <span class="toc-text">常见注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E8%8C%83%E5%9B%B4"><span class="toc-number">1.5.5.</span> <span class="toc-text">依赖范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.</span> <span class="toc-text">Maven 常见问题</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/" title="Maven 基础"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Maven 基础"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/" title="Maven 基础">Maven 基础</a><time datetime="2025-06-04T11:00:00.000Z" title="发表于 2025-06-04 19:00:00">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/%E5%89%8D%E7%AB%AF%20Web%20%E5%BC%80%E5%8F%91/" title="Web前端开发"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125274.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web前端开发"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/06/04/%E5%89%8D%E7%AB%AF%20Web%20%E5%BC%80%E5%8F%91/" title="Web前端开发">Web前端开发</a><time datetime="2025-06-04T09:00:00.000Z" title="发表于 2025-06-04 17:00:00">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/30/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E4%B9%8B%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="Redis最佳实践"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125258.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis最佳实践"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/30/Redis%E9%AB%98%E7%BA%A7%E7%AF%87%E4%B9%8B%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="Redis最佳实践">Redis最佳实践</a><time datetime="2025-05-30T03:00:00.000Z" title="发表于 2025-05-30 11:00:00">2025-05-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/26/%E5%AE%89%E8%A3%85Canal/" title="安装和配置Canal"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125263.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安装和配置Canal"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/05/26/%E5%AE%89%E8%A3%85Canal/" title="安装和配置Canal">安装和配置Canal</a><time datetime="2025-05-26T08:00:00.000Z" title="发表于 2025-05-26 16:00:00">2025-05-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By KeepStayTrue</span></div><div class="footer_custom_text"><img src="https://haiyong.site/img/icp.png" loading='lazy'><a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:black" target="_blank">苏ICP备24508978号-11010582026187</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,243,255" opacity="0.6" zIndex="-1" count="128" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
