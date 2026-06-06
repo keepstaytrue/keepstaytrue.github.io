@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Typora安装&amp;激活&amp;主题配置（保姆级教程） | KeepStayTrue</title><meta name="author" content="KeepStayTrue"><meta name="copyright" content="KeepStayTrue"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="f0f0f0"><meta name="description" content="Typora安装&amp;激活&amp;主题配置（保姆级教程） 方式一 1. 安装nodejs 2. 安装Typroa(我安装的版本 V1.12.4)  [!Tip] 安装好后打开Tyroa，选择输入序列号-&gt;选择离线激活-&gt;复制机器码到记事本-&gt;关闭程序  复制下面的脚本到安装目录下D:\Typora\resources文件夹内创建pj.js文件 修改209行的路径为自己的安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typora安装&amp;激活&amp;主题配置（保姆级教程）">
+<meta property="og:url" content="https://keepstaytrue.github.io/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/index.html">
+<meta property="og:site_name" content="KeepStayTrue">
+<meta property="og:description" content="Typora安装&amp;激活&amp;主题配置（保姆级教程） 方式一 1. 安装nodejs 2. 安装Typroa(我安装的版本 V1.12.4)  [!Tip] 安装好后打开Tyroa，选择输入序列号-&gt;选择离线激活-&gt;复制机器码到记事本-&gt;关闭程序  复制下面的脚本到安装目录下D:\Typora\resources文件夹内创建pj.js文件 修改209行的路径为自己的安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png">
+<meta property="article:published_time" content="2025-06-06T09:00:00.000Z">
+<meta property="article:modified_time" content="2026-06-06T08:29:07.239Z">
+<meta property="article:author" content="KeepStayTrue">
+<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="typora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Typora安装&激活&主题配置（保姆级教程）",
+  "url": "https://keepstaytrue.github.io/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/",
+  "image": "https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png",
+  "datePublished": "2025-06-06T09:00:00.000Z",
+  "dateModified": "2026-06-06T08:29:07.239Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "KeepStayTrue",
+      "url": "https://keepstaytrue.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/image/logo.png"><link rel="canonical" href="https://keepstaytrue.github.io/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="manifest" href="/img/pwa/manifest.json"/><link rel="apple-touch-icon" sizes="180x180" href="/img/pwa/apple-touch-icon.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/pwa/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/pwa/16.png"/><link rel="mask-icon" href="/img/pwa/safari-pinned-tab.svg" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '0a0a0a')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'f0f0f0')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 7 || hour >= 19
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d5ec88f9db978770ba0987b88800a5ee";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+btf.addGlobalFn('pjaxComplete', () => {
+  _hmt.push(['_trackPageview',window.location.pathname])
+}, 'baidu_analytics')
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":true,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: KeepStayTrue","link":"链接: ","source":"来源: KeepStayTrue","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#ff007f","bgDark":"#2a0a1f","position":"top-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Typora安装&激活&主题配置（保姆级教程）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="KeepStayTrue" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="bg-animation" id="web_bg" style="background-image: url(/image/calm-bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/image/logo.png" alt="Logo" loading='lazy'><span class="site-name">KeepStayTrue</span></a><a class="nav-page-title" href="/"><span class="site-name">Typora安装&amp;激活&amp;主题配置（保姆级教程）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/picture/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Typora安装&amp;激活&amp;主题配置（保姆级教程）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-06T09:00:00.000Z" title="发表于 2025-06-06 17:00:00">2025-06-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-06T08:29:07.239Z" title="更新于 2026-06-06 16:29:07">2026-06-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/">Java后端技术栈</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/">工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E5%90%8E%E7%AB%AF%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B7%A5%E5%85%B7/%E6%96%87%E6%A1%A3-%E7%AC%94%E8%AE%B0%E5%B7%A5%E5%85%B7/">文档&amp;笔记工具</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-06-06 16:29:07&quot;}" hidden></div><h1><strong>Typora安装&amp;激活&amp;主题配置（保姆级教程）</strong></h1>
+<h1>方式一</h1>
+<h2 id="1-安装nodejs">1. 安装nodejs</h2>
+<h2 id="2-安装Typroa-我安装的版本-V1-12-4">2. 安装Typroa(我安装的版本 V1.12.4)</h2>
+<blockquote>
+<p>[!Tip]</p>
+<p><strong>安装好后打开Tyroa，选择输入序列号-&gt;选择离线激活-&gt;复制机器码到记事本-&gt;关闭程序</strong></p>
+</blockquote>
+<p><strong>复制下面的脚本到安装目录下<code>D:\Typora\resources</code>文件夹内创建<code>pj.js</code>文件</strong></p>
+<p><strong>修改209行的路径为自己的安装路径const Typora_Installation_Path = “D:\Typora”;</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asar = <span class="built_in">require</span>(<span class="string">&quot;asar&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">&quot;chalk&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; execSync &#125; = <span class="built_in">require</span>(<span class="string">&quot;child_process&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> readlineSync = <span class="built_in">require</span>(<span class="string">&quot;readline-sync&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">WinReg</span> = <span class="built_in">require</span>(<span class="string">&quot;winreg&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; flipFuses, <span class="title class_">FuseV1Options</span>, <span class="title class_">FuseVersion</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;@electron/fuses&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getInsertCode</span>(<span class="params">EnableHookDebug, atobMachineCode, email, nowDateStr</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`</span></span><br><span class="line"><span class="string">/** Hook破解开始 */</span></span><br><span class="line"><span class="string">const electron = require(&quot;electron&quot;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// 是否启用劫持调试</span></span><br><span class="line"><span class="string">const HookDebug = <span class="subst">$&#123;EnableHookDebug ? <span class="string">&quot;true&quot;</span> : <span class="string">&quot;false&quot;</span>&#125;</span>;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// 调试日志定义</span></span><br><span class="line"><span class="string">const LOG_PATH = &quot;.\\\\Typora_Hook_Log.txt&quot;;</span></span><br><span class="line"><span class="string">//fs.rmSync(LOG_PATH, &#123; force: true &#125;);</span></span><br><span class="line"><span class="string">function writeLog(...data) &#123;</span></span><br><span class="line"><span class="string">    const log = \`[\$&#123;new Date().toLocaleString()&#125;] [Log] \$&#123;data.join(</span></span><br><span class="line"><span class="string">        &quot; &quot;</span></span><br><span class="line"><span class="string">    )&#125;\\n------------------\\n\`;</span></span><br><span class="line"><span class="string">    fs.appendFileSync(LOG_PATH, log);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// 开启调试窗口，阻止关闭 app.quit 调用</span></span><br><span class="line"><span class="string">// Hook Electron 模块，监控 BrowserWindow 实例化及阻止 app.quit 调用</span></span><br><span class="line"><span class="string">// Node模块require后会进行缓存，即使再次require会指向同一个对象</span></span><br><span class="line"><span class="string">if (HookDebug) &#123;</span></span><br><span class="line"><span class="string">    Object.defineProperty(electron.app, &quot;quit&quot;, &#123;</span></span><br><span class="line"><span class="string">        value: function () &#123;</span></span><br><span class="line"><span class="string">            writeLog(&quot;[&amp;#128737;&amp;#65039; 拦截] 程序试图调用 app.quit()，已阻止。&quot;);</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        writable: true,</span></span><br><span class="line"><span class="string">        configurable: true,</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">    electron.app.on(&quot;browser-window-created&quot;, (_event, win) =&gt; &#123;</span></span><br><span class="line"><span class="string">        writeLog(&quot;【&amp;#128064; 监控】检测到 BrowserWindow 实例化！&quot;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">        // 确保dom-ready后再打开DevTools 否则第一个窗口可能会无法打开</span></span><br><span class="line"><span class="string">        win.webContents.once(&quot;dom-ready&quot;, () =&gt; &#123;</span></span><br><span class="line"><span class="string">            writeLog(&quot;【&amp;#128295;】打开 DevTools...&quot;);</span></span><br><span class="line"><span class="string">            win.webContents.openDevTools(&#123; mode: &quot;detach&quot; &#125;);</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// Hook fs 模块，重定向对 resources/app 目录的访问</span></span><br><span class="line"><span class="string">// resources/app/ → resources/app.bak/</span></span><br><span class="line"><span class="string">const fsPathFrom = /resources[\\\\/]app[\\\\/]/i;</span></span><br><span class="line"><span class="string">const fsPathTo = &quot;resources\\\\app.bak\\\\&quot;;</span></span><br><span class="line"><span class="string">const fsHook = &#123;&#125;;</span></span><br><span class="line"><span class="string">[</span></span><br><span class="line"><span class="string">    &quot;readFileSync&quot;,</span></span><br><span class="line"><span class="string">    &quot;readFile&quot;,</span></span><br><span class="line"><span class="string">    &quot;statSync&quot;,</span></span><br><span class="line"><span class="string">    &quot;stat&quot;,</span></span><br><span class="line"><span class="string">    &quot;Stats&quot;,</span></span><br><span class="line"><span class="string">    &quot;StatsFs&quot;,</span></span><br><span class="line"><span class="string">    &quot;open&quot;,</span></span><br><span class="line"><span class="string">    &quot;openSync&quot;,</span></span><br><span class="line"><span class="string">].forEach((property) =&gt; &#123;</span></span><br><span class="line"><span class="string">    fsHook[property] = fs[property];</span></span><br><span class="line"><span class="string">    fs[property] = function (filePath, ...args) &#123;</span></span><br><span class="line"><span class="string">        if (typeof filePath == &quot;string&quot; &amp;&amp; fsPathFrom.test(filePath)) &#123;</span></span><br><span class="line"><span class="string">            const redirectPath = filePath.replace(fsPathFrom, fsPathTo);</span></span><br><span class="line"><span class="string">            writeLog(</span></span><br><span class="line"><span class="string">                \`[&amp;#128737;&amp;#65039; fsHook] 程序试图 fs.\$&#123;property&#125; 重定向 \$&#123;filePath&#125; --&gt; \$&#123;redirectPath&#125;\`</span></span><br><span class="line"><span class="string">            );</span></span><br><span class="line"><span class="string">            return fsHook[property].call(this, redirectPath, ...args);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        writeLog(\`[&amp;#128737;&amp;#65039; fsHook] 程序试图 fs.\$&#123;property&#125; \$&#123;filePath&#125;\`);</span></span><br><span class="line"><span class="string">        return fsHook[property].call(this, filePath, ...args);</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">const fsPromisesHook = &#123;&#125;;</span></span><br><span class="line"><span class="string">[&quot;readFile&quot;, &quot;open&quot;, &quot;stat&quot;].forEach((property) =&gt; &#123;</span></span><br><span class="line"><span class="string">    fsPromisesHook[property] = fs.promises[property];</span></span><br><span class="line"><span class="string">    fs.promises[property] = async function (filePath, ...args) &#123;</span></span><br><span class="line"><span class="string">        if (typeof filePath == &quot;string&quot; &amp;&amp; fsPathFrom.test(filePath)) &#123;</span></span><br><span class="line"><span class="string">            const redirectPath = filePath.replace(fsPathFrom, fsPathTo);</span></span><br><span class="line"><span class="string">            writeLog(</span></span><br><span class="line"><span class="string">                \`[&amp;#128737;&amp;#65039; fsHook/Promises] 程序试图 fs.promises.\$&#123;property&#125; 重定向 \$&#123;filePath&#125; --&gt; \$&#123;redirectPath&#125;\`</span></span><br><span class="line"><span class="string">            );</span></span><br><span class="line"><span class="string">            return fsPromisesHook[property].call(this, redirectPath, ...args);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        writeLog(</span></span><br><span class="line"><span class="string">            \`[&amp;#128737;&amp;#65039; fsHook/Promises] 程序试图 fs.promises.\$&#123;property&#125; \$&#123;filePath&#125;\`</span></span><br><span class="line"><span class="string">        );</span></span><br><span class="line"><span class="string">        return fsPromisesHook[property].call(this, filePath, ...args);</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// IPC 通信进行监控</span></span><br><span class="line"><span class="string">if (HookDebug) &#123;</span></span><br><span class="line"><span class="string">    const invokeFilter = [&quot;document.addSnapAndLastSync&quot;, &quot;document.setContent&quot;];</span></span><br><span class="line"><span class="string">    const originalIpcMainHandle = electron.ipcMain.handle;</span></span><br><span class="line"><span class="string">    electron.ipcMain.handle = function (channel, listener) &#123;</span></span><br><span class="line"><span class="string">        // writeLog(\`[IPC 注册] .handle 监听频道: &quot;\$&#123;channel&#125;&quot;\`);</span></span><br><span class="line"><span class="string">        const filter = !invokeFilter.includes(channel);</span></span><br><span class="line"><span class="string">        return originalIpcMainHandle.call(this, channel, async (event, ...args) =&gt; &#123;</span></span><br><span class="line"><span class="string">            filter &amp;&amp;</span></span><br><span class="line"><span class="string">                writeLog(</span></span><br><span class="line"><span class="string">                    \`[&amp;#128064;IPC 请求] 收到 .invoke(&quot;\$&#123;channel&#125;&quot;) 参数:\`,</span></span><br><span class="line"><span class="string">                    JSON.stringify(args)</span></span><br><span class="line"><span class="string">                );</span></span><br><span class="line"><span class="string">            try &#123;</span></span><br><span class="line"><span class="string">                const result = await listener(event, ...args);</span></span><br><span class="line"><span class="string">                filter &amp;&amp;</span></span><br><span class="line"><span class="string">                    writeLog(</span></span><br><span class="line"><span class="string">                        \`[&amp;#128064;IPC 响应] .handle(&quot;\$&#123;channel&#125;&quot;) 返回结果:\`,</span></span><br><span class="line"><span class="string">                        JSON.stringify(result)</span></span><br><span class="line"><span class="string">                    );</span></span><br><span class="line"><span class="string">                return result;</span></span><br><span class="line"><span class="string">            &#125; catch (error) &#123;</span></span><br><span class="line"><span class="string">                filter &amp;&amp; writeLog(\`[&amp;#128064;IPC 错误] .handle(&quot;\$&#123;channel&#125;&quot;) 执行出错:\`, error);</span></span><br><span class="line"><span class="string">                throw error;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;);</span></span><br><span class="line"><span class="string">    &#125;;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">const crypto = require(&quot;crypto&quot;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">const originalPublicDecrypt = crypto.publicDecrypt;</span></span><br><span class="line"><span class="string">crypto.publicDecrypt = function (key, buffer) &#123;</span></span><br><span class="line"><span class="string">    if (HookDebug) &#123;</span></span><br><span class="line"><span class="string">        writeLog(&quot;-------------------------------------------&quot;);</span></span><br><span class="line"><span class="string">        writeLog(&quot;【&amp;#128064; 监控】 crypto.publicDecrypt 被调用&quot;);</span></span><br><span class="line"><span class="string">        writeLog(&quot;Key:&quot;, key);</span></span><br><span class="line"><span class="string">        writeLog(&quot;Buffer (Hex):&quot;, buffer.toString(&quot;hex&quot;));</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    // return originalPublicDecrypt.call(this, key, buffer);</span></span><br><span class="line"><span class="string">    // 直接返回伪造的明文 Buffer</span></span><br><span class="line"><span class="string">    return Buffer.from(</span></span><br><span class="line"><span class="string">        JSON.stringify(&#123;</span></span><br><span class="line"><span class="string">            deviceId: &quot;<span class="subst">$&#123;atobMachineCode.l&#125;</span>&quot;,</span></span><br><span class="line"><span class="string">            fingerprint: &quot;<span class="subst">$&#123;atobMachineCode.i&#125;</span>&quot;,</span></span><br><span class="line"><span class="string">            email: &quot;<span class="subst">$&#123;email&#125;</span>&quot;,</span></span><br><span class="line"><span class="string">            license: &quot;Cracked_By_DreamNya&quot;,</span></span><br><span class="line"><span class="string">            version: &quot;<span class="subst">$&#123;atobMachineCode.v&#125;</span>&quot;,</span></span><br><span class="line"><span class="string">            date: &quot;<span class="subst">$&#123;nowDateStr&#125;</span>&quot;,</span></span><br><span class="line"><span class="string">            type: &quot;DreamNya&quot;,</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">// 劫持联网验证</span></span><br><span class="line"><span class="string">electron.app.whenReady().then(() =&gt; &#123;</span></span><br><span class="line"><span class="string">    electron.protocol.handle(&quot;https&quot;, async (request) =&gt; &#123;</span></span><br><span class="line"><span class="string">        writeLog(\`[&amp;#128064;electron.net Request] \$&#123;request.method&#125; \$&#123;request.url&#125;\`);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">        writeLog(&quot;request.url typeof:&quot;, typeof request.url, &quot;value:&quot;, request.url);</span></span><br><span class="line"><span class="string">        // 拦截目标请求，伪造响应</span></span><br><span class="line"><span class="string">        if (request.url === &quot;https://store.typora.io/api/client/renew&quot;) &#123;</span></span><br><span class="line"><span class="string">            if (HookDebug)&#123;</span></span><br><span class="line"><span class="string">                writeLog(\`[&amp;#128737;&amp;#65039; 拦截] 伪造激活验证响应: &#123;success:true, msg: \$&#123;btoa(&quot;DreamNya&quot;)&#125;&#125;\`);</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">            return new Response(</span></span><br><span class="line"><span class="string">                JSON.stringify(&#123; success: true, msg: btoa(&quot;DreamNya&quot;) &#125;),</span></span><br><span class="line"><span class="string">                &#123;</span></span><br><span class="line"><span class="string">                    status: 200,</span></span><br><span class="line"><span class="string">                    headers: &#123; &quot;content-type&quot;: &quot;application/json&quot; &#125;,</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">            );</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">        if (HookDebug) &#123;</span></span><br><span class="line"><span class="string">            // 尝试打印 Request Body</span></span><br><span class="line"><span class="string">            try &#123;</span></span><br><span class="line"><span class="string">                const reqClone = request.clone();</span></span><br><span class="line"><span class="string">                const reqBody = await reqClone.text();</span></span><br><span class="line"><span class="string">                if (reqBody) &#123;</span></span><br><span class="line"><span class="string">                    writeLog(&#x27;[electron.net Request Body]:&#x27;, reqBody);</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">            &#125; catch &#123; &#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">            // 其他请求正常转发</span></span><br><span class="line"><span class="string">            const response = await electron.net.fetch(request, &#123; bypassCustomProtocolHandlers: true &#125;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">            // 克隆响应用于日志</span></span><br><span class="line"><span class="string">            const resClone = response.clone();</span></span><br><span class="line"><span class="string">            resClone</span></span><br><span class="line"><span class="string">                .text()</span></span><br><span class="line"><span class="string">                .then((resText) =&gt; &#123;</span></span><br><span class="line"><span class="string">                    writeLog(\`[&amp;#128064;electron.net Response] \$&#123;response.status&#125; \$&#123;request.url&#125;\`);</span></span><br><span class="line"><span class="string">                    writeLog(&#x27;[electron.net Response Body]:&#x27;, resText.substring(0, 500));</span></span><br><span class="line"><span class="string">                &#125;)</span></span><br><span class="line"><span class="string">                .catch((err) =&gt; &#123;</span></span><br><span class="line"><span class="string">                    console.error(&#x27;[electron.net Response Error]:&#x27;, err);</span></span><br><span class="line"><span class="string">                &#125;);</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">            return response;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string"> </span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">/** Hook破解结束 */</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> <span class="title class_">EnableBackup</span> = <span class="literal">false</span>; <span class="comment">// 是否备份原始文件</span></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">EnableHookDebug</span> = <span class="literal">false</span>; <span class="comment">// 是否启用调试日志</span></span><br><span class="line"> <span class="comment">//修改下面的路径为安装路径</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Typora</span>_Installation_Path = <span class="string">&quot;D:\\typora&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> resourcesPath = path.<span class="title function_">join</span>(<span class="title class_">Typora</span>_Installation_Path, <span class="string">&quot;resources&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> asarPath = path.<span class="title function_">join</span>(resourcesPath, <span class="string">&quot;app.asar&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> appDir = path.<span class="title function_">join</span>(resourcesPath, <span class="string">&quot;app&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> appBakDir = path.<span class="title function_">join</span>(resourcesPath, <span class="string">&quot;app.bak&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> asarBakPath = path.<span class="title function_">join</span>(resourcesPath, <span class="string">&quot;app.asar.bak&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TyporaEXE</span> = path.<span class="title function_">join</span>(<span class="title class_">Typora</span>_Installation_Path, <span class="string">&quot;Typora.exe&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">LaunchDistJS</span> = path.<span class="title function_">join</span>(appDir, <span class="string">&quot;launch.dist.js&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 随机生成一个符合前端验证格式的注册码</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">generateRegCode</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> chars = <span class="string">&#x27;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> code = <span class="string">&#x27;+&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">        code += chars.<span class="title function_">charAt</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * chars.<span class="property">length</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    code += <span class="string">&#x27;#&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> code;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">closeTyporaProcesses</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="title function_">execSync</span>(<span class="string">&quot;taskkill /F /IM Typora.exe&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;已关闭所有 Typora.exe 进程&quot;</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">red</span>(<span class="string">&quot;Typora.exe 未运行或关闭失败,请手动关闭后继续。&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">        chalk.<span class="title function_">yellow</span>(</span><br><span class="line">            <span class="string">&quot;已尝试自动关闭所有 Typora.exe 进程，如果未关闭请手动关闭后再运行此程序。&quot;</span></span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 回车继续</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;请按回车键继续...&quot;</span>));</span><br><span class="line">    readlineSync.<span class="title function_">question</span>();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setRegValue</span>(<span class="params">regKey, name, value</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        regKey.<span class="title function_">set</span>(name, <span class="title class_">WinReg</span>.<span class="property">REG_SZ</span>, value, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (err) <span class="title function_">reject</span>(err);</span><br><span class="line">            <span class="keyword">else</span> <span class="title function_">resolve</span>();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getNowDateStr</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> now = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="keyword">const</span> dd = <span class="title class_">String</span>(now.<span class="title function_">getDate</span>()).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> mm = <span class="title class_">String</span>(now.<span class="title function_">getMonth</span>() + <span class="number">1</span>).<span class="title function_">padStart</span>(<span class="number">2</span>, <span class="string">&quot;0&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> yyyy = now.<span class="title function_">getFullYear</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;mm&#125;</span>/<span class="subst">$&#123;dd&#125;</span>/<span class="subst">$&#123;yyyy&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> nowDateStr = <span class="title function_">getNowDateStr</span>();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 要求输入机器码和邮箱</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;请输入机器码: &quot;</span>));</span><br><span class="line"><span class="keyword">const</span> machineCode = readlineSync.<span class="title function_">question</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;请输入邮箱: &quot;</span>));</span><br><span class="line"><span class="keyword">const</span> email = readlineSync.<span class="title function_">question</span>();</span><br><span class="line"><span class="comment">// 询问是否开启备份（默认开启）与调试（默认关闭）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;请选择是否开启备份与调试选项:&quot;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;【建议开启】是否开启备份？(Y/N): &quot;</span>));</span><br><span class="line"><span class="keyword">const</span> backupAnswer = readlineSync.<span class="title function_">question</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">&quot;【建议关闭】是否开启调试？(Y/N): &quot;</span>));</span><br><span class="line"><span class="keyword">const</span> debugAnswer = readlineSync.<span class="title function_">question</span>();</span><br><span class="line"><span class="title class_">EnableBackup</span> = backupAnswer.<span class="title function_">toLowerCase</span>() === <span class="string">&quot;y&quot;</span>;</span><br><span class="line"><span class="title class_">EnableHookDebug</span> = debugAnswer.<span class="title function_">toLowerCase</span>() === <span class="string">&quot;y&quot;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Base64 解码</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">atob</span>(<span class="params">str</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Buffer</span>.<span class="title function_">from</span>(str, <span class="string">&quot;base64&quot;</span>).<span class="title function_">toString</span>(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> atobMachineCode = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(<span class="title function_">atob</span>(machineCode));</span><br><span class="line"> </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;deviceId: &quot;</span> + atobMachineCode.<span class="property">l</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;fingerprint: &quot;</span> + atobMachineCode.<span class="property">i</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;version: &quot;</span> + atobMachineCode.<span class="property">v</span>));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 关闭所有 Typora.exe 进程</span></span><br><span class="line"><span class="title function_">closeTyporaProcesses</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;==== 开始破解... ====&quot;</span>));</span><br><span class="line"> </span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 一、反反调试</span></span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;一、正在进行反反调试操作...&quot;</span>));</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;解包 asar&quot;</span>));</span><br><span class="line">    <span class="keyword">await</span> asar.<span class="title function_">extractAll</span>(asarPath, appDir);</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">        chalk.<span class="title function_">yellow</span>(<span class="string">&quot;复制 app 到 app.bak（递归复制）【应对完整性校验】&quot;</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="comment">// 2. 复制 app 到 app.bak（递归复制）</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">copyDir</span>(<span class="params">src, dest</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!fs.<span class="title function_">existsSync</span>(dest)) fs.<span class="title function_">mkdirSync</span>(dest, &#123; <span class="attr">recursive</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> fs.<span class="title function_">readdirSync</span>(src, &#123; <span class="attr">withFileTypes</span>: <span class="literal">true</span> &#125;)) &#123;</span><br><span class="line">            <span class="keyword">const</span> srcPath = path.<span class="title function_">join</span>(src, entry.<span class="property">name</span>);</span><br><span class="line">            <span class="keyword">const</span> destPath = path.<span class="title function_">join</span>(dest, entry.<span class="property">name</span>);</span><br><span class="line">            <span class="keyword">if</span> (entry.<span class="title function_">isDirectory</span>()) &#123;</span><br><span class="line">                <span class="title function_">copyDir</span>(srcPath, destPath);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                fs.<span class="title function_">copyFileSync</span>(srcPath, destPath);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">copyDir</span>(appDir, appBakDir);</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;移除 app.asar 文件&quot;</span>));</span><br><span class="line">    <span class="comment">// 3. 重命名 app.asar 为 app.asar.bak</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">EnableBackup</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">renameSync</span>(asarPath, asarBakPath);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fs.<span class="title function_">rmSync</span>(asarPath, &#123; <span class="attr">force</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">        chalk.<span class="title function_">yellow</span>(<span class="string">&quot;修改 Typora.exe 的 fuse 配置，允许加载未打包的 app 目录&quot;</span>)</span><br><span class="line">    );</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">EnableBackup</span>) &#123;</span><br><span class="line">        <span class="comment">// 修改前先备份</span></span><br><span class="line">        fs.<span class="title function_">copyFileSync</span>(<span class="title class_">TyporaEXE</span>, <span class="string">`<span class="subst">$&#123;TyporaEXE&#125;</span>.bak`</span>);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 修改fuse配置（同时会修改程序hash）</span></span><br><span class="line">    <span class="title function_">flipFuses</span>(<span class="title class_">TyporaEXE</span>, &#123;</span><br><span class="line">        <span class="attr">version</span>: <span class="title class_">FuseVersion</span>.<span class="property">V1</span>,</span><br><span class="line">        [<span class="title class_">FuseV1Options</span>.<span class="property">OnlyLoadAppFromAsar</span>]: <span class="literal">false</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;反反调试操作完成！&quot;</span>));</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 二、注入破解代码</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;二、正在注入破解代码到 launch.dist.js...&quot;</span>));</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 读取原文件内容</span></span><br><span class="line">    <span class="keyword">let</span> content = fs.<span class="title function_">readFileSync</span>(<span class="title class_">LaunchDistJS</span>, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 查找第一个require语句后的分号</span></span><br><span class="line">    <span class="keyword">const</span> requireRegex = <span class="regexp">/require\([^)]+\);/</span>;</span><br><span class="line">    <span class="keyword">const</span> match = requireRegex.<span class="title function_">exec</span>(content);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> (match) &#123;</span><br><span class="line">        <span class="keyword">const</span> insertPos = match.<span class="property">index</span> + match[<span class="number">0</span>].<span class="property">length</span>;</span><br><span class="line">        <span class="keyword">const</span> insertCode = <span class="title function_">getInsertCode</span>(</span><br><span class="line">            <span class="title class_">EnableHookDebug</span>,</span><br><span class="line">            atobMachineCode,</span><br><span class="line">            email,</span><br><span class="line">            nowDateStr</span><br><span class="line">        );</span><br><span class="line">        <span class="comment">// 插入代码</span></span><br><span class="line">        content =</span><br><span class="line">            content.<span class="title function_">slice</span>(<span class="number">0</span>, insertPos) + insertCode + content.<span class="title function_">slice</span>(insertPos);</span><br><span class="line">        fs.<span class="title function_">writeFileSync</span>(<span class="title class_">LaunchDistJS</span>, content, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;成功插入破解代码到 launch.dist.js&quot;</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">            chalk.<span class="title function_">red</span>(<span class="string">&quot;未找到 require 语句，破解代码未插入launch.dist.js。&quot;</span>)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;注入破解代码完成！&quot;</span>));</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// // 三、注册激活</span></span><br><span class="line">    <span class="comment">// console.log(chalk.yellow(&quot;三、正在注册激活...&quot;));</span></span><br><span class="line">    <span class="comment">// try &#123;</span></span><br><span class="line">    <span class="comment">//     execSync(`start &quot;&quot; &quot;$&#123;TyporaEXE&#125;&quot;`);</span></span><br><span class="line">    <span class="comment">//     console.log(chalk.green(&quot;Typora 已启动！&quot;));</span></span><br><span class="line">    <span class="comment">// &#125; catch (e) &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(chalk.red(&quot;Typora 启动失败，请手动打开。&quot;));</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// const regCode = generateRegCode();</span></span><br><span class="line">    <span class="comment">// console.log(chalk.green(`您的注册码为：$&#123;regCode&#125;`));</span></span><br><span class="line">    <span class="comment">// console.log(chalk.yellow(&quot;请复制并用于激活。&quot;));</span></span><br><span class="line">    <span class="comment">// console.log(chalk.cyan(&quot;请按回车键继续...&quot;));</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// // 关闭Typora进程</span></span><br><span class="line">    <span class="comment">// closeTyporaProcesses();</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 三、修改注册表</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;三、正在修改注册表以关闭联网验证...&quot;</span>));</span><br><span class="line">    <span class="comment">// 修改注册表，尽量关闭联网验证</span></span><br><span class="line">    <span class="comment">// 注册表路径</span></span><br><span class="line">    <span class="keyword">const</span> regKey = <span class="keyword">new</span> <span class="title class_">WinReg</span>(&#123;</span><br><span class="line">        <span class="attr">hive</span>: <span class="title class_">WinReg</span>.<span class="property">HKCU</span>,</span><br><span class="line">        <span class="attr">key</span>: <span class="string">&quot;\\Software\\Typora&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">setRegValue</span>(regKey, <span class="string">&quot;SLicense&quot;</span>, <span class="string">&quot;RHJlYW1OeWE=#0#1/1/2029&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;SLicense 注册表字段写入成功&quot;</span>));</span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">setRegValue</span>(regKey, <span class="string">&quot;IDate&quot;</span>, nowDateStr);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;IDate 注册表字段写入成功&quot;</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">red</span>(<span class="string">&quot;写入注册表失败:&quot;</span>), err);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">&quot;==== 破解完成！使用愉快！====&quot;</span>));</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;后续操作建议：\n&quot;</span>));</span><br><span class="line">    <span class="keyword">const</span> regCode = <span class="title function_">generateRegCode</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">`\t1.您的注册码为：<span class="subst">$&#123;regCode&#125;</span> 请复制并用于激活。`</span>));</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">yellow</span>(<span class="string">&quot;\t2. 关闭【自动检查更新】功能，防止被覆盖。&quot;</span>));</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">        chalk.<span class="title function_">yellow</span>(</span><br><span class="line">            <span class="string">&quot;\t3. 关闭【Typora服务器使用国内服务器】功能，避免绕过联网验证失败。&quot;</span></span><br><span class="line">        )</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="title function_">main</span>();</span><br></pre></td></tr></table></figure>
+<h2 id="3-开始激活">3.开始激活</h2>
+<ol>
+<li>在<code>D:\Typora\resources</code>路径下打开命令行窗口 【鼠标点击一下地址栏直接输入<strong>CMD</strong>即可打开命令行窗口】</li>
+<li>安装chalk@4 asar readline-sync winreg @electron/fuses</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install chalk@4 asar readline-sync winreg @electron/fuses</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>运行脚本</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node pj.js</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>
+<p>按照提示输入   安装Typora时复制的到记事本中的机器码</p>
+</li>
+<li>
+<p>输入邮箱</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin@admin.com</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>按照提示输入</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">【建议开启】是否开启备份？(Y/N):</span><br><span class="line">Y</span><br><span class="line">【建议关闭】是否开启调试？(Y/N):</span><br><span class="line">N</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>敲回车继续</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/image-20260606145608262.png" alt="1" loading='lazy'></p>
+<ol start="8">
+<li>回到命令行后安装 native-reg</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install native-reg</span><br></pre></td></tr></table></figure>
+<h1>方式二 (推荐)</h1>
+<h3 id="一、官网地址">一、官网地址</h3>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://typora.io/">https://typora.io/</a></p>
+<p>中文官网：<a target="_blank" rel="noopener" href="https://typoraio.cn/">https://typoraio.cn/</a></p>
+<p>官网下载地址：<a target="_blank" rel="noopener" href="https://typoraio.cn/releases/all">https://typoraio.cn/releases/all</a></p>
+<h3 id="二、激活工具">二、激活工具</h3>
+<p>激活工具已整合打包，上传至云盘。</p>
+<p>提取地址： <a target="_blank" rel="noopener" href="https://www.alipan.com/s/73vzNVG7GoK">https://www.alipan.com/s/73vzNVG7GoK</a></p>
+<p>提取码：<code>g95a </code></p>
+<h3 id="三、安装Typora">三、安装Typora</h3>
+<p>点击下载好的Typora的<code>exe</code>文件，这里跳过，安装过程选择推荐进行安装即可，需要修改安装路径，尽量不要安装在C盘。</p>
+<p>安装好以后，关闭Typora运行窗口，不要选择15天试用，直接关闭激活窗口。</p>
+<h3 id="四、激活Typora">四、激活Typora</h3>
+<ol>
+<li>
+<p>将激活工具node_inject.exe和license-gen.exe复制到Typora安装目录下，如图所示：<br>
+<img src="https://img2024.cnblogs.com/blog/3382744/202503/3382744-20250311101125272-1752547887.png" alt="img" loading='lazy'></p>
+</li>
+<li>
+<p>在Typora安装目录输入cmd打开终端或快捷键Win+R打开运行窗口输入cmd进入终端。<br>
+<img src="https://img2024.cnblogs.com/blog/3382744/202503/3382744-20250311101314451-1414044104.png" alt="img" loading='lazy'></p>
+</li>
+<li>
+<p>在终端输入命令。</p>
+<p>输入<code>node_inject.exe</code>，显示了done即生成成功。<br>
+该命令是自动配置相关文件，在安装目录下会生成node目录。</p>
+<p>输入<code>license-gen.exe</code>，生成激活序列号。</p>
+<p>生成激活序列号后，此时不要关闭终端，<strong>复制序列号</strong>。</p>
+</li>
+<li>
+<p>运行Typora，在激活窗口输入邮箱和生成的激活序列号，即可激活。</p>
+</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/image-20260606162336757.png" alt="image-20260606162336757" loading='lazy'></p>
+<h1>主题配置</h1>
+<h2 id="Typora主题导入">[Typora主题导入]</h2>
+<p>要在Typora中导入主题，您可以按照以下步骤操作：</p>
+<ol>
+<li><strong>下载主题</strong>：首先，访问Typora的<a target="_blank" rel="noopener" href="https://blog.csdn.net/longintchar/article/details/105473693">主题网站</a>，选择并下载您喜欢的主题。下载后，您会得到一个压缩文件。</li>
+<li><strong>解压缩文件</strong>：将下载的压缩文件解压缩。通常，解压后会得到一个包含*.css*文件和其他资源文件的文件夹。</li>
+<li><strong>打开主题文件夹</strong>：在Typora中，点击菜单栏的“文件” -&gt; “偏好设置” -&gt; “外观”，然后点击“打开主题文件夹”按钮。</li>
+<li><strong>复制主题文件</strong>：将解压后的*.css*文件和相关资源文件复制到打开的主题文件夹中。</li>
+<li><strong>重启Typora</strong>：关闭并重新打开Typora。在菜单栏的“主题”选项中，您应该能看到新导入的主题。</li>
+</ol>
+<p>通过以上步骤，您可以轻松地在Typora中导入和使用新的主题，使您的Markdown编辑体验更加个性化和美观。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/">KeepStayTrue</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://keepstaytrue.github.io/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/">https://keepstaytrue.github.io/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://keepstaytrue.github.io" target="_blank">KeepStayTrue</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Markdown/">Markdown</a><a class="post-meta__tags" href="/tags/typora/">typora</a></div><div class="post-share"><div class="social-share" data-image="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/image/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/image/wechat.jpg" alt="微信"/ loading='lazy'></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/image/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/image/alipay.jpg" alt="支付宝"/ loading='lazy'></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/" title="Maven 基础"><img class="cover" src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post" loading='lazy'><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Maven 基础</div></div><div class="info-2"><div class="info-item-1">Web后端基础(Maven 基础)  [!TIP] 课程内容：   初始 Maven Maven 概述  Maven 模型 Maven 仓库介绍 Maven 安装与配置   IDEA 集成 Maven 依赖管理 单元测试  初始 Maven 介绍  Maven 是一款用于管理和构建 Java 项目的工具，是 Apache 旗下的一个开源项目 。  Apache 软件基金会，成立于 1999 年 7 月，是目前世界上最大的最受欢迎的开源软件基金会，也是一个专门为支持开源项目而生的非盈利性组织。 开源项目：https://www.apache.org/index.html#projects-list  那我们之前在 JavaSE 阶段，没有使用 Maven，依然可以构建 Java 项目。 我们为什么现在还要学习 Maven 呢 ? 那接下来，我们就来聊聊 Maven 的作用。 Maven 的作用  依赖管理 方便快捷的管理项目依赖的资源(jar 包)，避免版本冲突问题。 1). 使用 maven 前 我们项目中要想使用某一个 jar 包，就需要把这个 jar 包从官方网站下载下来，然...</div></div></div></a><a class="pagination-related" href="/2026/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93(MySQL)/" title="Web后端基础(数据库)"><img class="cover" src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125258.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post" loading='lazy'><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Web后端基础(数据库)</div></div><div class="info-2"><div class="info-item-1">05-Web后端基础(数据库) 前言 引言 在我们讲解 SpringBootWeb 基础知识(IOC、DI 等)的时候，我们讲到在 web 开发中，为了应用程序职责单一，方便维护，我们一般将 web 应用程序分为三层，即：Controller、Service、Dao 。 之前我们的案例中，是这样子的请求流程：浏览器发起请求，先请求 Controller；Controller 接收到请求之后，调用 Service 进行业务逻辑处理；Service 再调用 Dao，Dao 再解析 user.txt 中所存储的数据。  txt 文件中可以存储数据，但是在企业项目开发中一般不会使用文本文件存储项目数据，因为不便管理维护，操作难度大。 在真实的企业开发中呢，都会采用数据库来存储和管理数据，那此时，web 开发调用流程图如下所示：  那么今天我们就要来学习数据库技术。 相关概念 首先来了解一下什么是数据库。  **数据库：英文为 DataBase，简称 DB，**它是存储和管理数据的仓库。  像我们日常访问的电商网站京东，企业内部的管理系统 OA、ERP、CRM 这类的系统，以及大家每天都会...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/05/20/typora%E5%AD%A6%E4%B9%A0%E6%89%8B%E5%86%8C/" title="typora学习手册"><img class="cover" src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125274.png" alt="cover" loading='lazy'><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-20</div><div class="info-item-2">typora学习手册</div></div><div class="info-2"><div class="info-item-1">typora学习手册 一 、概述 1、简介 typora是一款轻量级但功能强大的markdown编辑器，支持实时预览、多种格式导出、自定义主题等功能。可以用来记笔记，写技术类的文档。不仅仅适用于程序员，同时也是一款好用的码字、写材料的工具。 1ps：写小说也可以用哦 2、下载及安装 搜索typora中文官网：Typora 官方中文站可根据自身系统进行下载。有米的请支持正版，也可参照以下两个网站步骤进行安装（方法引至CSDN，感谢各位）。  激活方法（目前版本1.9.5以前可用）：Typora 免费安装教程（已支持最新版 1.9.5）_typora免费安装-CSDN博客 不激活通过修改配置文件方法（各版本均可用）：typora 序列号（不使用也可以激活）_typora离线激活-CSDN博客  1ps:不缺这三瓜两枣的尽量购买 二 、使用手册 1、基本设置 以下是typora中常见的设置，其余可以保持默认 123#1 点开文件--&gt;偏好设置--&gt;文件选项--&gt;保存&amp;恢复中勾选“自动保存”#2 点开文件--&gt;偏好设置--&gt;markdown选项--&...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/image/%E5%A4%B4%E5%83%8F.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/ loading='lazy'></div><div class="author-info-name">KeepStayTrue</div><div class="author-info-description">业精于勤荒于嬉,行成于思毁于随</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">24</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/keepstaytrue"><i class="fa-solid fa-bars"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/keepstaytrue" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://blog.csdn.net/m0_64638272?spm=1000.2115.3001.5343" target="_blank" title="CSDN"><i class="fas fa-book" style="color: #d81e06;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Typora安装&amp;激活&amp;主题配置（保姆级教程）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">方式一</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85nodejs"><span class="toc-number">2.1.</span> <span class="toc-text">1. 安装nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85Typroa-%E6%88%91%E5%AE%89%E8%A3%85%E7%9A%84%E7%89%88%E6%9C%AC-V1-12-4"><span class="toc-number">2.2.</span> <span class="toc-text">2. 安装Typroa(我安装的版本 V1.12.4)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BC%80%E5%A7%8B%E6%BF%80%E6%B4%BB"><span class="toc-number">2.3.</span> <span class="toc-text">3.开始激活</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">方式二 (推荐)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">一、官网地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%BF%80%E6%B4%BB%E5%B7%A5%E5%85%B7"><span class="toc-number">3.2.</span> <span class="toc-text">二、激活工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85Typora"><span class="toc-number">3.3.</span> <span class="toc-text">三、安装Typora</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%BF%80%E6%B4%BBTypora"><span class="toc-number">3.4.</span> <span class="toc-text">四、激活Typora</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">主题配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Typora%E4%B8%BB%E9%A2%98%E5%AF%BC%E5%85%A5"><span class="toc-number">4.1.</span> <span class="toc-text">[Typora主题导入]</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93(MySQL)/" title="Web后端基础(数据库)"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125258.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web后端基础(数据库)"/ loading='lazy'></a><div class="content"><a class="title" href="/2026/06/05/%E6%95%B0%E6%8D%AE%E5%BA%93(MySQL)/" title="Web后端基础(数据库)">Web后端基础(数据库)</a><time datetime="2026-06-05T02:38:13.044Z" title="发表于 2026-06-05 10:38:13">2026-06-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/" title="Typora安装&amp;激活&amp;主题配置（保姆级教程）"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Typora安装&amp;激活&amp;主题配置（保姆级教程）"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/06/06/%E7%A0%B4%E8%A7%A3Typora/" title="Typora安装&amp;激活&amp;主题配置（保姆级教程）">Typora安装&amp;激活&amp;主题配置（保姆级教程）</a><time datetime="2025-06-06T09:00:00.000Z" title="发表于 2025-06-06 17:00:00">2025-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/" title="Maven 基础"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125253.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Maven 基础"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/06/04/Maven%20%E5%9F%BA%E7%A1%80/" title="Maven 基础">Maven 基础</a><time datetime="2025-06-04T11:00:00.000Z" title="发表于 2025-06-04 19:00:00">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/%E5%90%8E%E7%AB%AF%20Web%20%E5%BC%80%E5%8F%91/" title="Web后端基础"><img src="https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125263.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Web后端基础"/ loading='lazy'></a><div class="content"><a class="title" href="/2025/06/04/%E5%90%8E%E7%AB%AF%20Web%20%E5%BC%80%E5%8F%91/" title="Web后端基础">Web后端基础</a><time datetime="2025-06-04T09:00:00.000Z" title="发表于 2025-06-04 17:00:00">2025-06-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://gcore.jsdelivr.net/gh/keepstaytrue/blog_images@master/1779125285.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2026 By KeepStayTrue</span></div><div class="footer_custom_text"><img src="https://haiyong.site/img/icp.png" loading='lazy'><a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:black" target="_blank">苏ICP备24508978号-11010582026187</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="/js/tw_cn.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script><script>(() => {
+  const parseViewBox = viewBox => {
+    if (!viewBox) return null
+    const parts = viewBox.trim().split(/[\s,]+/).map(n => Number(n))
+    if (parts.length !== 4 || parts.some(n => Number.isNaN(n))) return null
+    return parts
+  }
+
+  const getSvgViewBox = svg => {
+    const attr = parseViewBox(svg.getAttribute('viewBox'))
+    if (attr) return attr
+
+    // Fallback: use bbox to build a viewBox
+    try {
+      const bbox = svg.getBBox()
+      if (bbox && bbox.width && bbox.height) return [bbox.x, bbox.y, bbox.width, bbox.height]
+    } catch (e) {
+      // getBBox may fail on some edge cases; ignore
+    }
+
+    const w = Number(svg.getAttribute('width')) || 0
+    const h = Number(svg.getAttribute('height')) || 0
+    if (w > 0 && h > 0) return [0, 0, w, h]
+    return [0, 0, 100, 100]
+  }
+
+  const setSvgViewBox = (svg, vb) => {
+    svg.setAttribute('viewBox', `${vb[0]} ${vb[1]} ${vb[2]} ${vb[3]}`)
+  }
+
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+  const openSvgInNewTab = ({ source, initViewBox }) => {
+    const getClonedSvg = () => {
+      if (typeof source === 'string') {
+        const template = document.createElement('template')
+        template.innerHTML = source.trim()
+        const svg = template.content.querySelector('svg')
+        return svg ? svg.cloneNode(true) : null
+      }
+      if (source && typeof source.cloneNode === 'function') {
+        return source.cloneNode(true)
+      }
+      return null
+    }
+
+    const clone = getClonedSvg()
+    if (!clone) return
+    if (initViewBox && initViewBox.length === 4) {
+      clone.setAttribute('viewBox', initViewBox.join(' '))
+    }
+    if (!clone.getAttribute('xmlns')) clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (!clone.getAttribute('xmlns:xlink') && clone.outerHTML.includes('xlink:')) {
+      clone.setAttribute('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    }
+    // inject background to match current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    const bg = getComputedStyle(document.body).backgroundColor || (isDark ? '#1e1e1e' : '#ffffff')
+    if (!clone.style.background) clone.style.background = bg
+
+    const serializer = new XMLSerializer()
+    const svgSource = serializer.serializeToString(clone)
+    const htmlSource = `<!doctype html><html><head><meta charset="utf-8" />
+      <style>
+        html, body { width: 100%; height: 100%; margin: 0; display: flex; align-items: center; justify-content: center; background: ${bg}; }
+        svg { max-width: 100%; max-height: 100%; height: auto; width: auto; }
+      </style>
+      </head><body>${svgSource}</body></html>`
+    const blob = new Blob([htmlSource], { type: 'text/html;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => URL.revokeObjectURL(url), 30000)
+  }
+
+  const attachMermaidViewerButton = wrap => {
+    let btn = wrap.querySelector('.mermaid-open-btn')
+    if (!btn) {
+      btn = document.createElement('button')
+      btn.type = 'button'
+      btn.className = 'mermaid-open-btn'
+      wrap.appendChild(btn)
+    }
+
+    btn.innerHTML = '<i class="fa fa-search fa-fw" aria-hidden="true"></i>'
+
+    if (!btn.__mermaidViewerBound) {
+      btn.addEventListener('click', e => {
+        e.preventDefault()
+        e.stopPropagation()
+        const svg = wrap.__mermaidOriginalSvg || wrap.querySelector('svg')
+        if (!svg) return
+        const initViewBox = wrap.__mermaidInitViewBox
+        if (typeof svg === 'string') {
+          openSvgInNewTab({ source: svg, initViewBox })
+          return
+        }
+        openSvgInNewTab({ source: svg, initViewBox })
+      })
+      btn.__mermaidViewerBound = true
+    }
+  }
+
+  // Zoom around a point (px, py) in the SVG viewport (in viewBox coordinates)
+  const zoomAtPoint = (vb, factor, px, py) => {
+    const w = vb[2] * factor
+    const h = vb[3] * factor
+    const nx = px - (px - vb[0]) * factor
+    const ny = py - (py - vb[1]) * factor
+    return [nx, ny, w, h]
+  }
+
+  const initMermaidGestures = wrap => {
+    const svg = wrap.querySelector('svg')
+    if (!svg) return
+
+    // Ensure viewBox exists so gestures always work
+    const initVb = getSvgViewBox(svg)
+    wrap.__mermaidInitViewBox = initVb
+    wrap.__mermaidCurViewBox = initVb.slice()
+    setSvgViewBox(svg, initVb)
+
+    // Avoid binding multiple times on themeChange/pjax
+    if (wrap.__mermaidGestureBound) return
+    wrap.__mermaidGestureBound = true
+
+    // Helper: map client (viewport) coordinate -> viewBox coordinate
+    const clientToViewBox = (clientX, clientY) => {
+      const rect = svg.getBoundingClientRect()
+      const vb = wrap.__mermaidCurViewBox || getSvgViewBox(svg)
+      const x = vb[0] + (clientX - rect.left) * (vb[2] / rect.width)
+      const y = vb[1] + (clientY - rect.top) * (vb[3] / rect.height)
+      return { x, y, rect, vb }
+    }
+
+    const state = {
+      pointers: new Map(),
+      startVb: null,
+      startDist: 0,
+      startCenter: null
+    }
+
+    const clampVb = vb => {
+      const init = wrap.__mermaidInitViewBox || vb
+      const minW = init[2] * 0.1
+      const maxW = init[2] * 10
+      const minH = init[3] * 0.1
+      const maxH = init[3] * 10
+      vb[2] = clamp(vb[2], minW, maxW)
+      vb[3] = clamp(vb[3], minH, maxH)
+      return vb
+    }
+
+    const setCurVb = vb => {
+      vb = clampVb(vb)
+      wrap.__mermaidCurViewBox = vb
+      setSvgViewBox(svg, vb)
+    }
+
+    const onPointerDown = e => {
+      // Allow only primary button for mouse
+      if (e.pointerType === 'mouse' && e.button !== 0) return
+      svg.setPointerCapture(e.pointerId)
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      if (state.pointers.size === 1) {
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      } else if (state.pointers.size === 2) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        state.startDist = Math.hypot(dx, dy)
+        state.startVb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        state.startCenter = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 }
+      }
+    }
+
+    const onPointerMove = e => {
+      if (!state.pointers.has(e.pointerId)) return
+      state.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY })
+
+      // Pan with 1 pointer
+      if (state.pointers.size === 1 && state.startVb) {
+        const p = [...state.pointers.values()][0]
+        const prev = { x: e.clientX - e.movementX, y: e.clientY - e.movementY }
+        // movementX/Y unreliable on touch, compute from stored last position
+        const last = wrap.__mermaidLastSinglePointer || p
+        const dxClient = p.x - last.x
+        const dyClient = p.y - last.y
+        wrap.__mermaidLastSinglePointer = p
+
+        const { rect } = clientToViewBox(p.x, p.y)
+        const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+        const dx = dxClient * (vb[2] / rect.width)
+        const dy = dyClient * (vb[3] / rect.height)
+        setCurVb([vb[0] - dx, vb[1] - dy, vb[2], vb[3]])
+        return
+      }
+
+      // Pinch zoom with 2 pointers
+      if (state.pointers.size === 2 && state.startVb && state.startDist > 0) {
+        const pts = [...state.pointers.values()]
+        const dx = pts[0].x - pts[1].x
+        const dy = pts[0].y - pts[1].y
+        const dist = Math.hypot(dx, dy)
+        if (!dist) return
+        const factor = state.startDist / dist // dist bigger => zoom in (viewBox smaller)
+
+        const cx = (pts[0].x + pts[1].x) / 2
+        const cy = (pts[0].y + pts[1].y) / 2
+        const centerClient = { x: cx, y: cy }
+
+        const pxy = clientToViewBox(centerClient.x, centerClient.y)
+        const cpx = pxy.x
+        const cpy = pxy.y
+
+        const vb = zoomAtPoint(state.startVb, factor, cpx, cpy)
+        setCurVb(vb)
+      }
+    }
+
+    const onPointerUpOrCancel = e => {
+      state.pointers.delete(e.pointerId)
+      if (state.pointers.size === 0) {
+        state.startVb = null
+        state.startDist = 0
+        state.startCenter = null
+        wrap.__mermaidLastSinglePointer = null
+      } else if (state.pointers.size === 1) {
+        // reset single pointer baseline to avoid jump
+        wrap.__mermaidLastSinglePointer = [...state.pointers.values()][0]
+      }
+    }
+
+    // Wheel zoom (mouse/trackpad)
+    const onWheel = e => {
+      // ctrlKey on mac trackpad pinch; we treat both as zoom
+      e.preventDefault()
+      const delta = e.deltaY
+      const zoomFactor = delta > 0 ? 1.1 : 0.9
+      const { x, y } = clientToViewBox(e.clientX, e.clientY)
+      const vb = (wrap.__mermaidCurViewBox || getSvgViewBox(svg)).slice()
+      setCurVb(zoomAtPoint(vb, zoomFactor, x, y))
+    }
+
+    const onDblClick = () => {
+      const init = wrap.__mermaidInitViewBox
+      if (!init) return
+      wrap.__mermaidCurViewBox = init.slice()
+      setSvgViewBox(svg, init)
+    }
+
+    svg.addEventListener('pointerdown', onPointerDown)
+    svg.addEventListener('pointermove', onPointerMove)
+    svg.addEventListener('pointerup', onPointerUpOrCancel)
+    svg.addEventListener('pointercancel', onPointerUpOrCancel)
+    svg.addEventListener('wheel', onWheel, { passive: false })
+    svg.addEventListener('dblclick', onDblClick)
+  }
+
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+
+      // Clear old render (themeChange/pjax will rerun)
+      const oldSvg = item.querySelector('svg')
+      if (oldSvg) oldSvg.remove()
+      item.__mermaidGestureBound = false
+
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+        if (true) initMermaidGestures(item)
+        item.__mermaidOriginalSvg = svg
+        if (true) attachMermaidViewerButton(item)
+      }
+
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,243,255" opacity="0.6" zIndex="-1" count="128" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
